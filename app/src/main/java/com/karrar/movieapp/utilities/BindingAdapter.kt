@@ -247,13 +247,6 @@ fun hideIfNotTypeOfMovie(view: View, mediaType: MediaType?) {
     if (mediaType != MediaType.MOVIE) view.isVisible = false
 }
 
-@BindingAdapter("android:rating")
-fun setRating(view: RatingBar?, rating: Float) {
-    view?.let {
-        view.rating = rating
-    }
-}
-
 @BindingAdapter("showWhenTextNotEmpty")
 fun <T> showWhenTextNotEmpty(view: View,text:String){
     view.isVisible = text.isNotEmpty()
