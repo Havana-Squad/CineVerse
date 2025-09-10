@@ -1,5 +1,6 @@
 package com.karrar.movieapp.data.repository.mediaDataSource.movie
 
+import android.util.Log
 import com.karrar.movieapp.data.remote.response.MovieDto
 import com.karrar.movieapp.data.remote.service.MovieService
 import com.karrar.movieapp.data.repository.mediaDataSource.BasePagingSource
@@ -13,7 +14,7 @@ class MovieDataSource @Inject constructor(
         val pageNumber = params.key ?: 1
         return try {
             val response = service.getAllMovies(pageNumber)
-
+            Log.d("Exploring", "load: code: ${response.code()}, message: ${response.message()}, body: ${response.body()}")
             LoadResult.Page(
                 data = response.body()?.items as List<MovieDto>,
                 prevKey = null,

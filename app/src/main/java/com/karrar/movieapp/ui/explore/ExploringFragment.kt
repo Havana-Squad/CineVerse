@@ -2,25 +2,35 @@ package com.karrar.movieapp.ui.explore
 
 import android.os.Bundle
 import android.transition.TransitionInflater
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.karrar.movieapp.R
 import com.karrar.movieapp.databinding.FragmentExploringBinding
+import com.karrar.movieapp.ui.adapters.LoadUIStateAdapter
 import com.karrar.movieapp.ui.base.BaseFragment
+import com.karrar.movieapp.ui.category.CategoryAdapter
 import com.karrar.movieapp.ui.explore.exploreUIState.ExploringUIEvent
-import com.karrar.movieapp.ui.explore.exploreUIState.TrendyMediaUIState
+import com.karrar.movieapp.ui.explore.exploreUIState.MediaUIState
 import com.karrar.movieapp.utilities.Constants
+import com.karrar.movieapp.utilities.collect
 import com.karrar.movieapp.utilities.collectLast
+import com.karrar.movieapp.utilities.setSpanSize
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
 class ExploringFragment : BaseFragment<FragmentExploringBinding>() {
     override val layoutIdFragment: Int = R.layout.fragment_exploring
     override val viewModel: ExploringViewModel by viewModels()
+    private val TAG = "ExploringFragment"
+    private val allMediaAdapter by lazy { ExploreAdapter(viewModel) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,9 +40,31 @@ class ExploringFragment : BaseFragment<FragmentExploringBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setTitle(true, resources.getString(R.string.explore_label))
+        setMediaAdapter()
         collectEvent()
-        binding.recyclerTrend.adapter = TrendAdapter(mutableListOf(), viewModel)
+        collectData()
+    }
+
+    private fun collectData() {
+        lifecycleScope.launch {
+            viewModel.uiState.collect {
+                collectLast(viewModel.uiState.value.media) {
+                    allMediaAdapter.submitData(it)
+                }
+            }
+        }
+    }
+
+    private fun setMediaAdapter() {
+        val footerAdapter = LoadUIStateAdapter(allMediaAdapter::retry)
+        binding.recyclerMedia.adapter = allMediaAdapter.withLoadStateFooter(footerAdapter)
+
+        val mManager = binding.recyclerMedia.layoutManager as GridLayoutManager
+        mManager.setSpanSize(footerAdapter, allMediaAdapter, mManager.spanCount)
+
+        collect(
+            flow = allMediaAdapter.loadStateFlow,
+            action = { viewModel.setErrorUiState(it) })
     }
 
     private fun collectEvent() {
@@ -43,27 +75,11 @@ class ExploringFragment : BaseFragment<FragmentExploringBinding>() {
 
     private fun onEvent(event: ExploringUIEvent) {
         when (event) {
-            ExploringUIEvent.ActorsEvent -> {
-                findNavController().navigate(ExploringFragmentDirections.actionExploringFragmentToActorsFragment())
-            }
-            ExploringUIEvent.MoviesEvent -> {
-                findNavController().navigate(
-                    ExploringFragmentDirections.actionExploringFragmentToCategoryFragment(
-                        Constants.MOVIE_CATEGORIES_ID
-                    )
-                )
-            }
+            ExploringUIEvent.RetryEvent -> allMediaAdapter.retry()
             ExploringUIEvent.SearchEvent -> navigateToSearch()
-            ExploringUIEvent.TVShowEvent -> {
-                findNavController().navigate(
-                    ExploringFragmentDirections.actionExploringFragmentToCategoryFragment(
-                        Constants.TV_CATEGORIES_ID
-                    )
-                )
-            }
-            is ExploringUIEvent.TrendEvent -> {
-                navigateToMediaDetails(event.trendyMediaUIState)
-            }
+            is ExploringUIEvent.SelectedCategory -> viewModel.getMediaList(selectedCategory = event.categoryID)
+            is ExploringUIEvent.SelectedMediaType -> viewModel.getMediaList(selectedMediaType = event.mediaTypeID)
+            is ExploringUIEvent.ClickMediaEvent -> navigateToMediaDetails(event.mediaItem)
         }
     }
 
@@ -76,7 +92,7 @@ class ExploringFragment : BaseFragment<FragmentExploringBinding>() {
             )
     }
 
-    private fun navigateToMediaDetails(item: TrendyMediaUIState) {
+    private fun navigateToMediaDetails(item: MediaUIState) {
         when (item.mediaType) {
             Constants.MOVIE -> {
                 findNavController().navigate(

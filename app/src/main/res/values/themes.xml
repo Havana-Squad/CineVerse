@@ -89,7 +89,7 @@
     </style>
 
     <style name="CardCorners.Medium">
-        <item name="cornerSize">@dimen/radius_medium</item>
+        <item name="cornerSize">@dimen/radius_lg</item>
     </style>
 
     <style name="Login" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
