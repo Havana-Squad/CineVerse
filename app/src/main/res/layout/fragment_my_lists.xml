@@ -14,7 +14,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.myList.MyListsFragment">
+        tools:context=".ui.myList.MyListsFragment"
+        android:background="@color/background_screen">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/saved_list"
@@ -38,9 +39,10 @@
             android:id="@+id/floating_action_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:cornerRadius="@dimen/radius_lg"
             android:layout_margin="16dp"
             android:onClick="@{()->viewModel.onCreateList()}"
-            app:backgroundTint="@color/brand_color"
+            app:backgroundTint="@color/brand_primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_baseline_add_24"
@@ -178,46 +180,76 @@
 
         <!--        empty List          -->
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/no_data"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/no_collection"
             android:layout_width="wrap_content"
-            android:layout_height="300dp"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/no_data" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/title"
-            style="@style/SemiBold.Large"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-64dp"
-            android:text="@string/empty"
-            android:textColor="@color/brand_color"
-            app:layout_constraintEnd_toEndOf="@+id/no_data"
-            app:layout_constraintStart_toStartOf="@+id/no_data"
-            app:layout_constraintTop_toBottomOf="@+id/no_data" />
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/no_collection_icon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                app:cardCornerRadius="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:backgroundTint="@color/brand_tertiary">
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/video_library_icon"
+                    android:layout_gravity="center" />
+            </com.google.android.material.card.MaterialCardView>
 
-        <TextView
-            android:id="@+id/description_empty_list"
-            style="@style/Regular.Medium.Secondary"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/no_collection_header"
+                style="@style/Title.SM"
+                android:textColor="@color/shade_primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_collections_header"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/no_collection_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                style="@style/Body_SM.Medium"
+                android:textColor="@color/shade_secondary"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/no_collection_content_text"
+                app:layout_constraintTop_toBottomOf="@id/no_collection_header"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/no_collection_btn"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:text="@string/this_list_has_no_movies"
-            app:layout_constraintEnd_toEndOf="@+id/no_data"
-            app:layout_constraintStart_toStartOf="@+id/no_data"
-            app:layout_constraintTop_toBottomOf="@+id/title" />
+            android:backgroundTint="@color/button_primary"
+            android:textColor="@color/button_onPrimary"
+            android:text="@string/start_collecting"
+            app:cornerRadius="@dimen/radius_md"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/no_collection"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <androidx.constraintlayout.widget.Group
             android:id="@+id/empty_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:constraint_referenced_ids="description_empty_list,title,no_data"
+            app:constraint_referenced_ids="no_collection,no_collection_btn"
             app:isListEmpty="@{viewModel.createdListUIState.isEmpty}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

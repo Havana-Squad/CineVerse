@@ -60,7 +60,7 @@
                 android:textColor="@color/shade_secondary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{@string/items(item.mediaCounts)}"
+                android:text="@{@string/collection_item(item.mediaCounts)}"
                 android:layout_marginTop="4dp"
                 android:layout_marginStart="28dp"
                 android:layout_marginEnd="28dp"

@@ -1,105 +1,111 @@
 <resources>
-    <string name="app_name">Movie App</string>
+    <string name="app_name" translatable="false">Movie App</string>
 
-    <string name="see_all">See all</string>
-    <string name="top_rated">Top Rated</string>
-    <string name="latest">Latest</string>
-    <string name="popular">Popular</string>
-    <string name="tv_shows">TV Shows</string>
-    <string name="search_hint">Search for a movie, tv show, person…</string>
-    <string name="movies_chip">Movies</string>
-    <string name="tv_shows_chip">TV Shows</string>
-    <string name="actors_label">Actors</string>
-    <string name="login_to_your_account">Login to your account</string>
-    <string name="username">Username</string>
-    <string name="password">Password</string>
-    <string name="login">Login</string>
-    <string name="don_t_have_an_account">Don’t have an account?</string>
-    <string name="sign_up">Sign up</string>
-    <string name="place_of_birth">place of Birth</string>
-    <string name="konwn_for">Known For</string>
-    <string name="todo">TODO</string>
-    <string name="gender">Gender</string>
-    <string name="birthday">Birthday</string>
-    <string name="biography">Biography</string>
-    <string name="movies">Movies</string>
-    <string name="actors">Actors</string>
-    <string name="oops">Oops!</string>
-    <string name="description">There is no internet connection\nPlease check it out</string>
-    <string name="all_movies_of_actor">All Movies Of Actor</string>
+    <string name="see_all" translatable="false">See all</string>
+    <string name="top_rated" translatable="false">Top Rated</string>
+    <string name="latest" translatable="false">Latest</string>
+    <string name="popular" translatable="false">Popular</string>
+    <string name="tv_shows" translatable="false">TV Shows</string>
+    <string name="search_hint" translatable="false">Search for a movie, tv show, person…</string>
+    <string name="movies_chip" translatable="false">Movies</string>
+    <string name="tv_shows_chip" translatable="false">TV Shows</string>
+    <string name="actors_label" translatable="false">Actors</string>
+    <string name="login_to_your_account" translatable="false">Login to your account</string>
+    <string name="username" translatable="false">Username</string>
+    <string name="password" translatable="false">Password</string>
+    <string name="login" translatable="false">Login</string>
+    <string name="don_t_have_an_account" translatable="false">Don’t have an account?</string>
+    <string name="sign_up" translatable="false">Sign up</string>
+    <string name="place_of_birth" translatable="false">place of Birth</string>
+    <string name="konwn_for" translatable="false">Known For</string>
+    <string name="todo" translatable="false">TODO</string>
+    <string name="gender" translatable="false">Gender</string>
+    <string name="birthday" translatable="false">Birthday</string>
+    <string name="biography" translatable="false">Biography</string>
+    <string name="movies" translatable="false">Movies</string>
+    <string name="actors" translatable="false">Actors</string>
+    <string name="oops" translatable="false">Oops!</string>
+    <string name="description" translatable="false">There is no internet connection\nPlease check it out</string>
+    <string name="all_movies_of_actor" translatable="false">All Movies Of Actor</string>
     <!--   Titles -->
-    <string name="title_on_air">On The Air</string>
-    <string name="title_tv_shows">TV Shows</string>
-    <string name="title_mystery">Mystery</string>
-    <string name="title_adventure">Adventure</string>
-    <string name="title_trending">Trending</string>
-    <string name="title_streaming">Now Streaming</string>
-    <string name="title_upcoming">Upcoming</string>
-    <string name="title_celebrity">Celebrities</string>
-    <string name="title_airing_today">Airing today</string>
-    <string name="title_top_rated_tv_show">Top Rated Tv-Show</string>
-    <string name="text_movies">%s Movies</string>
-    <string name="movies_label">Movies</string>
-    <string name="tv_shows_label">TV Shows</string>
-    <string name="history_label">History</string>
-    <string name="explore_label">Explore</string>
-    <string name="trending_today_label">Trending Today</string>
-    <string name="home">Home</string>
-    <string name="explore">Explore</string>
-    <string name="myList">My Lists</string>
-    <string name="profile">Profile</string>
-    <string name="play_trailer">Play Trailer</string>
-    <string name="duration">%1$d Minutes</string>
-    <string name="reviews">(%1$s reviews)</string>
-    <string name="overview">Overview</string>
-    <string name="cast">Cast</string>
-    <string name="similar_movies">Similar Movies</string>
-    <string name="rate_the_movie">Rate The Movie</string>
-    <string name="reviews_title">Reviews</string>
-    <string name="review">Reviews</string>
-    <string name="reviews_comment">Reviews</string>
-    <string name="user_name">"@" %1$s</string>
-    <string name="back_button">back button</string>
-    <string name="view_all_reviews">View all reviews</string>
-    <string name="episodes">Episodes</string>
-    <string name="seasons">Seasons</string>
-    <string name="submit_toast">Submitted, Thank you for your feedback</string>
-    <string name="total_episodes">%1$s Episodes</string>
-    <string name="m">%1$s m</string>
-    <string name="watch_history">Watch History</string>
-    <string name="rated_movies">My Ratings</string>
-    <string name="sign_out">Sign Out</string>
-    <string name="at">\@</string>
-    <string name="are_you_sure">Are You Sure?</string>
-    <string name="you_re_about_to_sign_out_of_your_account">You’re about to sign out of your account.</string>
-    <string name="cancel">Cancel</string>
-    <string name="logout">Sign Out</string>
-    <string name="this_list_has_no_movies">This list has no movies</string>
-    <string name="zero">\.0</string>
-    <string name="my_ratings">My Ratings</string>
-    <string name="items">%1$s Items</string>
+    <string name="title_on_air" translatable="false">On The Air</string>
+    <string name="title_tv_shows" translatable="false">TV Shows</string>
+    <string name="title_mystery" translatable="false">Mystery</string>
+    <string name="title_adventure" translatable="false">Adventure</string>
+    <string name="title_trending" translatable="false">Trending</string>
+    <string name="title_streaming" translatable="false">Now Streaming</string>
+    <string name="title_upcoming" translatable="false">Upcoming</string>
+    <string name="title_celebrity" translatable="false">Celebrities</string>
+    <string name="title_airing_today" translatable="false">Airing today</string>
+    <string name="title_top_rated_tv_show" translatable="false">Top Rated Tv-Show</string>
+    <string name="text_movies" translatable="false">%s Movies</string>
+    <string name="movies_label" translatable="false">Movies</string>
+    <string name="tv_shows_label" translatable="false">TV Shows</string>
+    <string name="history_label" translatable="false">History</string>
+    <string name="explore_label" translatable="false">Explore</string>
+    <string name="trending_today_label" translatable="false">Trending Today</string>
+    <string name="home" translatable="false">Home</string>
+    <string name="explore" translatable="false">Explore</string>
+    <string name="myList" translatable="false">My Lists</string>
+    <string name="profile" translatable="false">Profile</string>
+    <string name="play_trailer" translatable="false">Play Trailer</string>
+    <string name="duration" translatable="false">%1$d Minutes</string>
+    <string name="reviews" translatable="false">(%1$s reviews)</string>
+    <string name="overview" translatable="false">Overview</string>
+    <string name="cast" translatable="false">Cast</string>
+    <string name="similar_movies" translatable="false">Similar Movies</string>
+    <string name="rate_the_movie" translatable="false">Rate The Movie</string>
+    <string name="reviews_title" translatable="false">Reviews</string>
+    <string name="review" translatable="false">Reviews</string>
+    <string name="reviews_comment" translatable="false">Reviews</string>
+    <string name="user_name" translatable="false">"@" %1$s</string>
+    <string name="back_button" translatable="false">back button</string>
+    <string name="view_all_reviews" translatable="false">View all reviews</string>
+    <string name="episodes" translatable="false">Episodes</string>
+    <string name="seasons" translatable="false">Seasons</string>
+    <string name="submit_toast" translatable="false">Submitted, Thank you for your feedback</string>
+    <string name="total_episodes" translatable="false">%1$s Episodes</string>
+    <string name="m" translatable="false">%1$s m</string>
+    <string name="watch_history" translatable="false">Watch History</string>
+    <string name="rated_movies" translatable="false">My Ratings</string>
+    <string name="sign_out" translatable="false">Sign Out</string>
+    <string name="at" translatable="false">\@</string>
+    <string name="are_you_sure" translatable="false">Are You Sure?</string>
+    <string name="you_re_about_to_sign_out_of_your_account" translatable="false">You’re about to sign out of your account.</string>
+    <string name="cancel" translatable="false">Cancel</string>
+    <string name="logout" translatable="false">Sign Out</string>
+    <string name="this_list_has_no_movies" translatable="false">This list has no movies</string>
+    <string name="zero" translatable="false">\.0</string>
+    <string name="my_ratings" translatable="false">My Ratings</string>
+    <string name="items" translatable="false">%1$s Items</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="create">Create</string>
-    <string name="list_name">List Name</string>
-    <string name="explore_some_movies_on_home_or_search_and_then_create_your_movie_list">Explore some movies on “Home” or “Search” and then create your movie list.</string>
-    <string name="empty_overview_text">This season has no description.</string>
-    <string name="one_season">%1$d Season</string>
-    <string name="more_than_one_season">%1$d Seasons</string>
-    <string name="internet_connection">There is no internet connection.</string>
-    <string name="retry">Retry</string>
-    <string name="you_must_be_logged_in_to_see_the_profile">You must be logged in to see the profile and use additional features.</string>
-    <string name="new_list">New List</string>
-    <string name="log_in">Log In</string>
-    <string name="you_must_be_logged_in_to_use_list_features">You must be logged in to use lists feature.</string>
-    <string name="empty">Empty</string>
-    <string name="create_a_new_list">Create a new list</string>
-    <string name="save_to">Save to…</string>
-    <string name="hours_pattern">%1$s hours</string>
-    <string name="minutes_pattern">%1$s minutes</string>
-    <string name="hours_minutes_pattern">%1$s h %2$s m</string>
-    <string name="you_must_be_logged_in_to_save_a_movie">You must be logged in to save a movie</string>
-    <string name="this_list_has_no_lists">No lists found</string>
-    <string name="episode_title">%1$d. %2$s</string>
-    <string name="season_number">(%1$s Seasons)</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="create" translatable="false">Create</string>
+    <string name="list_name" translatable="false">List Name</string>
+    <string name="explore_some_movies_on_home_or_search_and_then_create_your_movie_list" translatable="false">Explore some movies on “Home” or “Search” and then create your movie list.</string>
+    <string name="empty_overview_text" translatable="false">This season has no description.</string>
+    <string name="one_season" translatable="false">%1$d Season</string>
+    <string name="more_than_one_season" translatable="false">%1$d Seasons</string>
+    <string name="internet_connection" translatable="false">There is no internet connection.</string>
+    <string name="retry" translatable="false">Retry</string>
+    <string name="you_must_be_logged_in_to_see_the_profile" translatable="false">You must be logged in to see the profile and use additional features.</string>
+    <string name="new_list" translatable="false">New List</string>
+    <string name="log_in" translatable="false">Log In</string>
+    <string name="you_must_be_logged_in_to_use_list_features" translatable="false">You must be logged in to use lists feature.</string>
+    <string name="empty" translatable="false">Empty</string>
+    <string name="create_a_new_list" translatable="false">Create a new list</string>
+    <string name="save_to" translatable="false">Save to…</string>
+    <string name="hours_pattern" translatable="false">%1$s hours</string>
+    <string name="minutes_pattern" translatable="false">%1$s minutes</string>
+    <string name="hours_minutes_pattern" translatable="false">%1$s h %2$s m</string>
+    <string name="you_must_be_logged_in_to_save_a_movie" translatable="false">You must be logged in to save a movie</string>
+    <string name="this_list_has_no_lists" translatable="false">No lists found</string>
+    <string name="episode_title" translatable="false">%1$d. %2$s</string>
+    <string name="season_number" translatable="false">(%1$s Seasons)</string>
+
+    <!-- CineVerse  -->
+    <string name="collection_item">%1$s movies</string>
+    <string name="start_collecting">Start Collecting</string>
+    <string name="no_collection_content_text">Start building your personal library by saving movies or series you want to remember.</string>
+    <string name="no_collections_header">No Collections Yet</string>
 </resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- CineVerse  -->
+    <string name="collection_item">%1$ افلام</string>
+    <string name="start_collecting">ابدأ الجمع</string>
+    <string name="no_collection_content_text">ابدأ ببناء مكتبتك الشخصية عن طريق حفظ الأفلام أو المسلسلات التي تريد تذكرها.</string>
+    <string name="no_collections_header">لا توجد مجموعات حتى الآن</string>
+</resources>
