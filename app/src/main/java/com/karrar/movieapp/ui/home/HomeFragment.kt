@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override val layoutIdFragment = R.layout.fragment_home
     override val viewModel: HomeViewModel by viewModels()
-    lateinit var homeAdapter: HomeAdapter
+    private lateinit var homeAdapter: HomeAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,6 +27,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         setAdapter()
         collectEvent()
         collectHomeData()
+        binding.header.userName="elamncy"
     }
 
     private fun collectHomeData() {

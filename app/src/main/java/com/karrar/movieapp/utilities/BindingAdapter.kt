@@ -16,6 +16,7 @@ import com.karrar.movieapp.ui.base.BaseAdapter
 import com.karrar.movieapp.ui.category.uiState.ErrorUIState
 import com.karrar.movieapp.ui.category.uiState.GenreUIState
 import com.karrar.movieapp.utilities.Constants.FIRST_CATEGORY_ID
+import com.squareup.picasso.Picasso
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
@@ -250,4 +251,15 @@ fun hideIfNotTypeOfMovie(view: View, mediaType: MediaType?) {
 @BindingAdapter("showWhenTextNotEmpty")
 fun <T> showWhenTextNotEmpty(view: View,text:String){
     view.isVisible = text.isNotEmpty()
+}
+
+@BindingAdapter("imageUrl")
+fun bindImage(imageView: ImageView, imageUrl: String?) {
+    imageUrl?.let {
+        Picasso.get()
+            .load(imageUrl)
+            .placeholder(R.color.background_color)
+            .error(R.color.brand_color)
+            .into(imageView)
+    }
 }

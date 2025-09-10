@@ -1,8 +1,12 @@
 package com.karrar.movieapp.ui.home.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import com.karrar.movieapp.BR
 import com.karrar.movieapp.R
 import com.karrar.movieapp.domain.enums.HomeItemsType
@@ -13,6 +17,7 @@ import com.karrar.movieapp.ui.home.HomeInteractionListener
 import com.karrar.movieapp.ui.home.HomeItem
 import com.karrar.movieapp.ui.models.MediaUiState
 import com.karrar.movieapp.utilities.Constants
+import kotlin.math.abs
 
 class HomeAdapter(
     private var homeItems: MutableList<HomeItem>,
@@ -49,6 +54,8 @@ class HomeAdapter(
                         BR.adapterRecycler,
                         PopularMovieAdapter(currentItem.items, listener as HomeInteractionListener)
                     )
+                    val popularRecyclerView = holder.binding.root.findViewById<RecyclerView>(R.id.recycler_popular_movie)
+                    setupCarouselAnimation(popularRecyclerView)
                 }
 
                 is HomeItem.TvShows -> {
@@ -161,10 +168,73 @@ class HomeAdapter(
                 is HomeItem.NowStreaming,
                 is HomeItem.Trending,
                 is HomeItem.Upcoming,
-                -> R.layout.list_movie
+                    -> R.layout.list_movie
             }
         }
         return -1
     }
 
+    private fun setupCarouselAnimation(recyclerView: RecyclerView) {
+        val minHorizontalScale = 0.85f
+        val maxHorizontalScale = 1.0f
+
+        val minHeightScale = 200f / 230f
+        val maxHeightScale = 1.0f
+
+        val minAlpha = 0.6f
+        val maxAlpha = 1.0f
+
+        val maxElevation = 20f
+        val translationFactor = 0.25f
+        val verticalShiftDp = 34f
+
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val layoutManager = recyclerView.layoutManager ?: return
+                val recyclerViewCenterX = recyclerView.width / 2f
+                val verticalShiftPx = verticalShiftDp * recyclerView.context.resources.displayMetrics.density
+
+                for (i in 0 until recyclerView.childCount) {
+                    val child = recyclerView.getChildAt(i)
+                    val cardView = child.findViewById<MaterialCardView>(R.id.card_poster)
+
+                    val childCenterX = (layoutManager.getDecoratedLeft(child) + layoutManager.getDecoratedRight(child)) / 2f
+                    val distance = abs(recyclerViewCenterX - childCenterX)
+                    val scaleFactor = (distance / recyclerViewCenterX).coerceAtMost(1f)
+
+                    val horizontalScale = maxHorizontalScale - (scaleFactor * (maxHorizontalScale - minHorizontalScale))
+                    child.scaleX = horizontalScale
+
+                    val verticalScale = minHeightScale + (scaleFactor * (maxHeightScale - minHeightScale))
+                    child.scaleY = verticalScale
+
+                    val alpha = maxAlpha - (scaleFactor * (maxAlpha - minAlpha))
+                    child.alpha = alpha
+
+                    val elevationFactor = 1 - scaleFactor
+                    cardView?.elevation = elevationFactor * maxElevation
+
+                    child.translationZ = elevationFactor * maxElevation
+
+                    val direction = if (childCenterX < recyclerViewCenterX) 1 else -1
+                    val translationX = direction * child.width * translationFactor * scaleFactor
+                    child.translationX = translationX
+
+                    child.translationY = -(elevationFactor * verticalShiftPx)
+
+                    val title = child.findViewById<TextView>(R.id.text_movie_title)
+                    val genres = child.findViewById<TextView>(R.id.text_movie_genres)
+
+                    if (horizontalScale > 0.99f) {
+                        title?.visibility = View.VISIBLE
+                        genres?.visibility = View.VISIBLE
+                    } else {
+                        title?.visibility = View.INVISIBLE
+                        genres?.visibility = View.INVISIBLE
+                    }
+                }
+            }
+        })
+    }
 }
