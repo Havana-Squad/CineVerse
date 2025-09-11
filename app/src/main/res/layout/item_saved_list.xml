@@ -18,8 +18,9 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="63dp"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="12dp"
+        android:layout_marginTop="12dp"
         android:backgroundTint="@color/background_card"
         android:onClick="@{()->listener.onListClick(item)}"
         app:cardCornerRadius="@dimen/radius_lg"
@@ -31,6 +32,7 @@
             android:padding="12dp">
             
             <ImageView
+                android:id="@+id/folder_icon"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/folder_icon"
@@ -50,7 +52,7 @@
                 android:layout_marginStart="28dp"
                 android:layout_marginEnd="28dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@id/folder_icon"
                 app:layout_constraintBottom_toTopOf="@id/count"
                 tools:text="Action movies" />
 
@@ -66,7 +68,7 @@
                 android:layout_marginEnd="28dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/folder_icon"
                 tools:text="14 items" />
 
             <ImageView
