@@ -108,4 +108,6 @@
     <string name="start_collecting">Start Collecting</string>
     <string name="no_collection_content_text">Start building your personal library by saving movies or series you want to remember.</string>
     <string name="no_collections_header">No Collections Yet</string>
+    <string name="need_login_header">You\'re Almost There!</string>
+    <string name="need_login_content">Log in to save movies, create collections, and get personalized recommendations.</string>
 </resources>
