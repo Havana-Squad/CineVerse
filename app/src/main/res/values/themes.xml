@@ -168,6 +168,17 @@
         <item name="android:textSize">@dimen/text_display_xl</item>
     </style>
 
+    <style name="Body_Display_MD">
+        <item name="android:textSize">@dimen/text_body_md</item>
+        <item name="fontFamily">@font/manrope_medium</item>
+    </style>
+
+    <style name="Body_SM_Display_Medium" >
+        <item name="android:fontFamily">@font/manrope_medium</item>
+        <item name="android:textSize">@dimen/text_body_sm</item>
+    </style>
+
+
     <!-- ========= Titles ========= -->
     <style name="Title">
         <item name="android:fontFamily">@font/manrope_medium</item>
