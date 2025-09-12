@@ -85,6 +85,13 @@ class MyListsViewModel @Inject constructor(
         }
     }
 
+    fun onCancelBtnClicked(){
+        viewModelScope.launch {
+            _createListDialogUIState.update { it.copy(mediaListName = "") }
+            _myListUIEvent.emit(Event(MyListUIEvent.CLickAddEvent))
+        }
+    }
+
     override fun onListClick(item: CreatedListUIState) {
         _myListUIEvent.update { Event(MyListUIEvent.OnSelectItem(item)) }
     }

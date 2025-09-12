@@ -9,4 +9,8 @@
     <string name="need_login_content">قم بتسجيل الدخول لحفظ الأفلام وإنشاء مجموعات والحصول على توصيات مخصصة.</string>
     <string name="my_collections">مجموعاتي</string>
     <string name="create_new_collection">إنشاء مجموعة جديدة</string>
+    <string name="collection_name">اسم المجموعة</string>
+    <string name="e_g_my_watchlist">مثال: قائمة مشاهدتي</string>
+    <string name="cancel_txt">إلغاء</string>
+    <string name="create_txt">إنشاء</string>
 </resources>

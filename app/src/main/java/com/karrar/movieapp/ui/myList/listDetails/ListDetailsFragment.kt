@@ -19,7 +19,7 @@ class ListDetailsFragment : BaseFragment<FragmentListDetailsBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setTitle(true, viewModel.args.listName)
+        //setTitle(true, viewModel.args.listName)
         binding.lists.adapter = ListDetailsAdapter(mutableListOf(), viewModel)
         collectLast(viewModel.listDetailsUIEvent) {
             it.getContentIfNotHandled()?.let { onEvent(it) }

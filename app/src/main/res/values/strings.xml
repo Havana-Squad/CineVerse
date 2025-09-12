@@ -112,4 +112,8 @@
     <string name="need_login_content">Log in to save movies, create collections, and get personalized recommendations.</string>
     <string name="my_collections">My Collections</string>
     <string name="create_new_collection">Create New Collection</string>
+    <string name="collection_name">Collection Name</string>
+    <string name="e_g_my_watchlist">e.g. My Watchlist</string>
+    <string name="cancel_txt">Cancel</string>
+    <string name="create_txt">Create</string>
 </resources>

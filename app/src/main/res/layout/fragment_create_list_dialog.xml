@@ -42,6 +42,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginTop="35dp"
+            android:onClick="@{()->viewModel.onCancelBtnClicked()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,7 +52,7 @@
             android:textColor="@color/shade_secondary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Collection Name"
+            android:text="@string/collection_name"
             android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/header"/>
@@ -63,22 +64,23 @@
             android:layout_marginTop="8dp"
             style="@style/Body_MD.Medium"
             android:textColorHint="@color/shade_tertiary"
-            app:hintTextColor="@color/shade_primary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/content">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/folder_icon_gray"
+                android:drawablePadding="8dp"
                 android:background="@drawable/input_field_background"
                 android:afterTextChanged="@{(text) -> viewModel.onListNameInputChange(text)}"
-                style="@style/Body_MD.Medium"
                 android:inputType="textPersonName"
                 android:maxLength="15"
-                android:hint="e.g. My Watchlist"
+                android:hint="@string/e_g_my_watchlist"
                 android:maxLines="1"
+                android:paddingBottom="20dp"
                 android:textColor="@color/shade_primary"
                 android:textCursorDrawable="@drawable/color_cursor" />
 
@@ -95,7 +97,8 @@
             android:backgroundTint="@color/button_secondary"
             android:minHeight="48dp"
             android:paddingVertical="15dp"
-            android:text="Cancel"
+            android:text="@string/cancel_txt"
+            android:onClick="@{()->viewModel.onCancelBtnClicked()}"
             android:textColor="@color/button_onSecondary"
             app:cornerRadius="@dimen/radius_md"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -116,7 +119,7 @@
             android:minHeight="48dp"
             android:onClick="@{()->viewModel.onClickAddList()}"
             android:paddingVertical="15dp"
-            android:text="Create"
+            android:text="@string/create_txt"
             android:textColor="@color/on_primary_btn"
             app:cornerRadius="@dimen/radius_md"
             app:layout_constraintBottom_toBottomOf="parent"
