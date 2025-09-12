@@ -5,5 +5,8 @@ data class MediaUIState(
     val mediaType: String,
     val mediaImage: String,
     val mediaName: String,
-    val mediaAverageRating: String
+    val mediaAverageRating: String,
+    val mediaGenres: String,
+    val mediaDuration: String,
+    val mediaReleaseDate: String,
 )

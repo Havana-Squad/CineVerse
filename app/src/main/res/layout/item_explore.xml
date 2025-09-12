@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/spacing_small"
-        android:layout_marginVertical="@dimen/spacing_small">
+        android:layout_marginBottom="@dimen/spacing_medium">
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/image_trend"
             android:layout_width="match_parent"

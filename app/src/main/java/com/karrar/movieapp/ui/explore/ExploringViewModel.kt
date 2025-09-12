@@ -1,6 +1,5 @@
 package com.karrar.movieapp.ui.explore
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
@@ -22,13 +21,14 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import com.karrar.movieapp.ui.explore.exploreUIState.ErrorUIState
+import com.karrar.movieapp.ui.explore.exploreUIState.ExploreViewMode
 import com.karrar.movieapp.utilities.Constants
 import javax.inject.Inject
 
 
 @HiltViewModel
 class ExploringViewModel @Inject constructor(
-    private val getCategoryUseCase: GetMediaByGenreIDUseCase,
+    private val getMediaByGenreUseCase: GetMediaByGenreIDUseCase,
     private val mediaUIStateMapper: MediaUIStateMapper,
     private val genreUIStateMapper: GenreUIStateMapper,
     private val getGenresUseCase: GetGenreListUseCase,
@@ -56,7 +56,7 @@ class ExploringViewModel @Inject constructor(
         selectedMediaType: Int = uiState.value.selectedMediaTypeID
     ) {
         viewModelScope.launch {
-            val result = getCategoryUseCase(selectedMediaType, selectedCategory)
+            val result = getMediaByGenreUseCase(selectedMediaType, selectedCategory)
             _uiState.update {
                 it.copy(
                     isLoading = false,
@@ -90,7 +90,7 @@ class ExploringViewModel @Inject constructor(
 
     override fun onClickCategory(categoryId: Int) {
         viewModelScope.launch {
-            _uiState.update { it.copy(selectedCategoryID = categoryId) }
+            _uiState.update { it.copy(selectedCategoryID = categoryId, isLoading = true) }
             _exploringUIEvent.emit(Event(ExploringUIEvent.SelectedCategory(categoryId)))
         }
     }
@@ -99,15 +99,20 @@ class ExploringViewModel @Inject constructor(
         _exploringUIEvent.update { Event(ExploringUIEvent.SearchEvent) }
     }
 
-    fun onClickMicrophone() {
-        Log.d("ExploreFragmentLog", "onClickMicrophone called")
-    }
-
     override fun onClickMediaType(mediaTypeId: Int) {
         viewModelScope.launch {
             _uiState.update { it.copy(selectedMediaTypeID = mediaTypeId) }
             getGenres()
             _exploringUIEvent.emit(Event(ExploringUIEvent.SelectedMediaType(mediaTypeId)))
+        }
+    }
+
+    override fun onClickViewMode(viewMode: ExploreViewMode) {
+        viewModelScope.launch {
+            if (uiState.value.selectedViewMode != viewMode) {
+                _uiState.update { it.copy(selectedViewMode = viewMode) }
+                _exploringUIEvent.emit(Event(ExploringUIEvent.SelectedViewMode(viewMode)))
+            }
         }
     }
 

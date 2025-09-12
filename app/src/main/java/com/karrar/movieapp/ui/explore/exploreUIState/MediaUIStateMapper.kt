@@ -12,7 +12,10 @@ class MediaUIStateMapper @Inject constructor() : Mapper<Media, MediaUIState> {
             mediaImage = input.mediaImage,
             mediaType = input.mediaType,
             mediaName = input.mediaName,
-            mediaAverageRating = String.format("%.1f", input.mediaRate)
+            mediaAverageRating = String.format("%.1f", input.mediaRate),
+            mediaGenres = "",
+            mediaDuration = "",
+            mediaReleaseDate = input.mediaDate
         )
     }
 }

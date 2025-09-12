@@ -10,4 +10,5 @@ sealed interface ExploringUIEvent {
     data class ClickMediaEvent(val mediaItem: MediaUIState): ExploringUIEvent
     data class SelectedCategory(val categoryID: Int = Constants.FIRST_CATEGORY_ID): ExploringUIEvent
     data class SelectedMediaType(val mediaTypeID: Int = Constants.MOVIE_CATEGORIES_ID): ExploringUIEvent
+    data class SelectedViewMode(val viewMode: ExploreViewMode): ExploringUIEvent
 }

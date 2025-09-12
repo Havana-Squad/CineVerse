@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.karrar.movieapp.ui.explore.exploreUIState.MediaUIState" />
+
+        <variable
+            name="listener"
+            type="com.karrar.movieapp.ui.explore.ExploreInteractionListener" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_small"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        app:cardCornerRadius="@dimen/radius_lg"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/background_card">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/explore_poster"
+                android:layout_width="64dp"
+                android:layout_height="88dp"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/CardCorners.SharpBottomRight"
+                tools:src="@drawable/trend"
+                app:posterImage="@{item.mediaImage}"
+                android:onClick="@{() -> listener.onClickMedia(item)}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBaseline_toBottomOf="parent"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/explore_header"
+                app:layout_constraintStart_toEndOf="@id/explore_poster"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginHorizontal="@dimen/spacing_medium_small"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@id/explore_genres"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{item.mediaName}"
+                    android:textAppearance="@style/Body_MD.Medium"
+                    android:textColor="@color/shade_primary"
+                    tools:text="The Avengers"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.mediaAverageRating}"
+                    android:textAppearance="@style/Body_MD.Medium"
+                    android:textColor="@color/shade_primary"
+                    tools:text="7.5"/>
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_star"
+                    android:layout_marginStart="@dimen/spacing_too_small"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/explore_genres"
+                app:layout_constraintStart_toStartOf="@id/explore_header"
+                app:layout_constraintTop_toBottomOf="@id/explore_header"
+                app:layout_constraintBottom_toTopOf="@id/explore_footer"
+                android:text="@{item.mediaGenres}"
+                app:showWhenTextNotEmpty="@{item.mediaGenres}"
+                android:textAppearance="@style/Body_SM.Regular"
+                android:textColor="@color/shade_secondary"
+                tools:text="Drama, Action, Crime, Thriller"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/explore_footer"
+                app:layout_constraintStart_toStartOf="@id/explore_genres"
+                app:layout_constraintTop_toBottomOf="@id/explore_genres"
+                app:layout_constraintBottom_toBottomOf="@id/explore_poster"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.mediaDuration}"
+                    android:drawableStart="@drawable/ic_clock"
+                    android:drawablePadding="@dimen/spacing_too_small"
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:textAppearance="@style/Label_MD.Regular"
+                    android:textColor="@color/shade_secondary"
+                    app:showWhenTextNotEmpty="@{item.mediaDuration}"
+                    tools:text="2h 32m"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.mediaReleaseDate}"
+                    android:drawableStart="@drawable/ic_calendar"
+                    android:drawablePadding="@dimen/spacing_too_small"
+                    android:textAppearance="@style/Label_MD.Regular"
+                    android:textColor="@color/shade_secondary"
+                    app:showWhenTextNotEmpty="@{item.mediaReleaseDate}"
+                    tools:text="2008, Jul 18"/>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

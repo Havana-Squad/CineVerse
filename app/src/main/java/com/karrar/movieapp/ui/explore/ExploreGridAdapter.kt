@@ -6,7 +6,7 @@ import com.karrar.movieapp.ui.base.*
 import com.karrar.movieapp.ui.explore.exploreUIState.MediaUIState
 
 
-class ExploreAdapter(listener: ExploreInteractionListener)
+class ExploreGridAdapter(listener: ExploreInteractionListener)
     : BasePagingAdapter<MediaUIState>(MediaComparator, listener){
     override val layoutID: Int = R.layout.item_explore
 

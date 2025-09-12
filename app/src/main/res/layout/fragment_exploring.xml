@@ -62,7 +62,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_microphone"
                 app:tint="@color/shade_primary"
-                android:onClick="@{() -> viewModel.onClickMicrophone()}" />
+                android:onClick="@{() -> viewModel.onClickSearch()}" />
         </LinearLayout>
 
         <View
@@ -108,7 +108,7 @@
             android:id="@+id/recycler_media"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="@dimen/spacing_medium"
+            android:layout_marginHorizontal="@dimen/spacing_small"
             android:clipToPadding="false"
             android:overScrollMode="never"
             android:paddingTop="60dp"
@@ -119,9 +119,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/media_type_tabs"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:spanCount="2"
             tools:listitem="@layout/item_explore"  />
 
         <include
@@ -143,33 +141,101 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <HorizontalScrollView
-            android:id="@+id/horizontalScrollView"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_genres"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/chip_height"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_marginTop="@dimen/spacing_medium_small"
-            android:clipToPadding="false"
-            android:overScrollMode="never"
             android:paddingHorizontal="@dimen/spacing_medium"
-            android:scrollbars="none"
-            app:layout_constraintTop_toBottomOf="@id/media_type_tabs"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/chip_item_explore_category"
+            app:items="@{viewModel.uiState.genres}"
+            app:resetScroll="@{false}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:background="@color/brand_color">
+            app:layout_constraintTop_toBottomOf="@id/media_type_tabs"/>
 
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/genres_chip_group"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:listener="@{viewModel}"
-                app:selectedChip="@{viewModel.uiState.selectedCategoryID}"
-                app:selectionRequired="true"
-                app:chipSpacing="@dimen/spacing_medium_small"
-                app:setExploreGenres="@{viewModel.uiState.genres}"
-                app:singleLine="true"
-                app:singleSelection="true" />
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:background="@drawable/toggle_container_background"
+                android:padding="4dp">
 
-        </HorizontalScrollView>
+                <ImageButton
+                    android:id="@+id/view_grid_button"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginEnd="2dp"
+                    android:background="@drawable/explore_button_background"
+                    android:src="@drawable/ic_grid_selector"
+                    android:scaleType="centerInside"
+                    android:padding="12dp"
+                    app:isSelectedViewMode="@{viewModel.uiState.selectedViewMode == com.karrar.movieapp.ui.explore.exploreUIState.ExploreViewMode.GRID}"
+                    android:contentDescription="Grid View" />
+
+                <ImageButton
+                    android:id="@+id/view_list_button"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="2dp"
+                    android:background="@drawable/explore_button_background"
+                    android:src="@drawable/ic_list_selector"
+                    android:scaleType="centerInside"
+                    android:padding="12dp"
+                    app:isSelectedViewMode="@{viewModel.uiState.selectedViewMode == com.karrar.movieapp.ui.explore.exploreUIState.ExploreViewMode.LIST}"
+                    android:contentDescription="List View" />
+
+            </LinearLayout>
+
+            <!--            <com.google.android.material.button.MaterialButtonToggleGroup-->
+<!--                android:id="@+id/toggleButton"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_margin="5dp"-->
+<!--                android:background="@android:color/black"-->
+<!--                app:singleSelection="true"-->
+<!--                app:selectionRequired="true"-->
+<!--                app:checkedButton="@id/view_grid_button">-->
+
+<!--                <com.google.android.material.button.MaterialButton-->
+<!--                    android:id="@+id/view_grid_button"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_weight="1"-->
+<!--                    app:icon="@drawable/ic_grid_selector"-->
+<!--                    app:iconGravity="textStart"-->
+<!--                    app:iconPadding="0dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:insetTop="0dp"-->
+<!--                    android:insetLeft="0dp"-->
+<!--                    android:insetRight="0dp"-->
+<!--                    android:insetBottom="0dp"-->
+<!--                    app:cornerRadius="@dimen/radius_lg"-->
+<!--                    android:backgroundTint="@drawable/explore_button_background"/>-->
+
+<!--                <com.google.android.material.button.MaterialButton-->
+<!--                    android:id="@+id/view_list_button"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_weight="1"-->
+<!--                    app:icon="@drawable/ic_list_selector"-->
+<!--                    app:iconGravity="textStart"-->
+<!--                    app:iconPadding="0dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:insetTop="0dp"-->
+<!--                    android:insetLeft="0dp"-->
+<!--                    android:insetRight="0dp"-->
+<!--                    android:insetBottom="0dp"-->
+<!--                    app:cornerRadius="@dimen/radius_lg"-->
+<!--                    android:backgroundTint="@drawable/explore_button_background"/>-->
+
+<!--            </com.google.android.material.button.MaterialButtonToggleGroup>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

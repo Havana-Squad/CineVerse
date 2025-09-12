@@ -3,9 +3,11 @@ package com.karrar.movieapp.utilities
 import android.content.Context
 import android.util.Log
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import androidx.annotation.DrawableRes
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -20,6 +22,7 @@ import com.karrar.movieapp.ui.base.BaseAdapter
 import com.karrar.movieapp.ui.category.uiState.ErrorUIState
 import com.karrar.movieapp.ui.category.uiState.GenreUIState
 import com.karrar.movieapp.ui.explore.ExploreInteractionListener
+import com.karrar.movieapp.ui.explore.exploreUIState.ExploreViewMode
 import com.karrar.movieapp.utilities.Constants.FIRST_CATEGORY_ID
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
@@ -140,10 +143,11 @@ fun <T> hideWhenSuccessSearch(view: View, text: String, error: List<T>?, loading
 
 // different
 
-@BindingAdapter(value = ["app:items"])
-fun <T> setRecyclerItems(view: RecyclerView, items: List<T>?) {
+@BindingAdapter(value = ["app:items", "app:resetScroll"], requireAll = false)
+fun <T> setRecyclerItems(view: RecyclerView, items: List<T>?, resetScroll: Boolean? = false) {
     (view.adapter as BaseAdapter<T>?)?.setItems(items ?: emptyList())
     view.scrollToPosition(0)
+    if (resetScroll == true) view.scrollToPosition(0)
 }
 
 
@@ -283,4 +287,9 @@ fun hideIfNotTypeOfMovie(view: View, mediaType: MediaType?) {
 @BindingAdapter("showWhenTextNotEmpty")
 fun <T> showWhenTextNotEmpty(view: View,text:String){
     view.isVisible = text.isNotEmpty()
+}
+
+@BindingAdapter("isSelectedViewMode")
+fun isSelectedViewMode(button: ImageButton, isSelected: Boolean) {
+    button.isSelected = isSelected
 }

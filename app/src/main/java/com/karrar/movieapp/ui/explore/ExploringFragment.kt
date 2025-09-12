@@ -2,7 +2,6 @@ package com.karrar.movieapp.ui.explore
 
 import android.os.Bundle
 import android.transition.TransitionInflater
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -10,11 +9,13 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.karrar.movieapp.R
 import com.karrar.movieapp.databinding.FragmentExploringBinding
 import com.karrar.movieapp.ui.adapters.LoadUIStateAdapter
 import com.karrar.movieapp.ui.base.BaseFragment
-import com.karrar.movieapp.ui.category.CategoryAdapter
+import com.karrar.movieapp.ui.explore.exploreUIState.ExploreViewMode
 import com.karrar.movieapp.ui.explore.exploreUIState.ExploringUIEvent
 import com.karrar.movieapp.ui.explore.exploreUIState.MediaUIState
 import com.karrar.movieapp.utilities.Constants
@@ -22,15 +23,18 @@ import com.karrar.movieapp.utilities.collect
 import com.karrar.movieapp.utilities.collectLast
 import com.karrar.movieapp.utilities.setSpanSize
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlin.math.exp
 
 
 @AndroidEntryPoint
 class ExploringFragment : BaseFragment<FragmentExploringBinding>() {
     override val layoutIdFragment: Int = R.layout.fragment_exploring
     override val viewModel: ExploringViewModel by viewModels()
-    private val TAG = "ExploringFragment"
-    private val allMediaAdapter by lazy { ExploreAdapter(viewModel) }
+    private val exploreGridAdapter by lazy { ExploreGridAdapter(viewModel) }
+    private val exploreListAdapter by lazy { ExploreListAdapter(viewModel) }
+    private lateinit var genreAdapter: GenreAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,30 +45,74 @@ class ExploringFragment : BaseFragment<FragmentExploringBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setMediaAdapter()
+        setGenreAdapter()
+        setToggleButtons()
         collectEvent()
         collectData()
     }
 
+    private fun setToggleButtons() {
+        binding.viewGridButton.setOnClickListener {
+            viewModel.onClickViewMode(ExploreViewMode.GRID)
+        }
+
+        binding.viewListButton.setOnClickListener {
+            viewModel.onClickViewMode(ExploreViewMode.LIST)
+        }
+    }
+
     private fun collectData() {
         lifecycleScope.launch {
-            viewModel.uiState.collect {
+            viewModel.uiState.collect { state ->
+                genreAdapter.setItems(state.genres)
+                genreAdapter.setSelectedGenre(state.selectedCategoryID)
                 collectLast(viewModel.uiState.value.media) {
-                    allMediaAdapter.submitData(it)
+                    if(state.selectedViewMode == ExploreViewMode.GRID) {
+                        exploreGridAdapter.submitData(it)
+                    } else {
+                        exploreListAdapter.submitData(it)
+                    }
                 }
             }
         }
     }
 
-    private fun setMediaAdapter() {
-        val footerAdapter = LoadUIStateAdapter(allMediaAdapter::retry)
-        binding.recyclerMedia.adapter = allMediaAdapter.withLoadStateFooter(footerAdapter)
+    private fun setMediaAdapter(viewMode: ExploreViewMode = ExploreViewMode.GRID) {
+        if(viewMode == ExploreViewMode.GRID) {
+            val footerAdapter = LoadUIStateAdapter(exploreGridAdapter::retry)
+            binding.recyclerMedia.adapter = exploreGridAdapter.withLoadStateFooter(footerAdapter)
+            val layoutManager = GridLayoutManager(requireContext(), 2)
+            binding.recyclerMedia.layoutManager = layoutManager
+            layoutManager.setSpanSize(footerAdapter, exploreGridAdapter, layoutManager.spanCount)
+            collect(
+                flow = exploreGridAdapter.loadStateFlow,
+                action = { viewModel.setErrorUiState(it) })
 
-        val mManager = binding.recyclerMedia.layoutManager as GridLayoutManager
-        mManager.setSpanSize(footerAdapter, allMediaAdapter, mManager.spanCount)
+            lifecycleScope.launch {
+                exploreGridAdapter.submitData(viewModel .uiState.value.media.first())
+            }
+        } else {
+            val footerAdapter = LoadUIStateAdapter(exploreListAdapter::retry)
+            binding.recyclerMedia.adapter = exploreListAdapter.withLoadStateFooter(footerAdapter)
+            val layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+            binding.recyclerMedia.layoutManager = layoutManager
+            collect(
+                flow = exploreListAdapter.loadStateFlow,
+                action = { viewModel.setErrorUiState(it) }
+            )
+            lifecycleScope.launch {
+                exploreListAdapter.submitData(viewModel.uiState.value.media.first())
+            }
+        }
+    }
 
-        collect(
-            flow = allMediaAdapter.loadStateFlow,
-            action = { viewModel.setErrorUiState(it) })
+    private fun setGenreAdapter() {
+        genreAdapter = GenreAdapter(emptyList(), viewModel)
+
+        binding.rvGenres.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = genreAdapter
+        }
     }
 
     private fun collectEvent() {
@@ -75,11 +123,12 @@ class ExploringFragment : BaseFragment<FragmentExploringBinding>() {
 
     private fun onEvent(event: ExploringUIEvent) {
         when (event) {
-            ExploringUIEvent.RetryEvent -> allMediaAdapter.retry()
+            ExploringUIEvent.RetryEvent -> exploreGridAdapter.retry()
             ExploringUIEvent.SearchEvent -> navigateToSearch()
             is ExploringUIEvent.SelectedCategory -> viewModel.getMediaList(selectedCategory = event.categoryID)
             is ExploringUIEvent.SelectedMediaType -> viewModel.getMediaList(selectedMediaType = event.mediaTypeID)
             is ExploringUIEvent.ClickMediaEvent -> navigateToMediaDetails(event.mediaItem)
+            is ExploringUIEvent.SelectedViewMode -> setMediaAdapter(event.viewMode)
         }
     }
 
