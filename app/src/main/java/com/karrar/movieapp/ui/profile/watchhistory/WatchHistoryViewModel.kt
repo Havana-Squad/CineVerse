@@ -53,4 +53,8 @@ class WatchHistoryViewModel @Inject constructor(
         }
     }
 
+    override fun onClickExplore() {
+        _watchHistoryUIEvent.update { Event(WatchHistoryUIEvent.NavigateExploreEvent()) }
+    }
+
 }
