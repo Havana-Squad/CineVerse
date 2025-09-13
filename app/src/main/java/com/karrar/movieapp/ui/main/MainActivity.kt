@@ -18,6 +18,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.karrar.movieapp.R
 import com.karrar.movieapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.util.Locale
 
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeAppTheme() {
         lifecycleScope.launch {
-            viewModel.darkMode.collect { darkMode ->
+            viewModel.darkMode.collectLatest { darkMode ->
                 val newMode = if (darkMode) {
                     AppCompatDelegate.MODE_NIGHT_YES
                 } else {

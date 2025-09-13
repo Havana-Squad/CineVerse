@@ -23,6 +23,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import androidx.core.net.toUri
+import kotlinx.coroutines.flow.distinctUntilChanged
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
@@ -77,8 +78,8 @@ class ProfileViewModel @Inject constructor(
         }
     }
 
-    private fun checkIfUserLoggedIn(){
-        if (checkIfLoggedInUseCase()){
+    private fun checkIfUserLoggedIn() {
+        if (checkIfLoggedInUseCase()) {
             _profileDetailsUIState.update {
                 it.copy(isLoggedIn = true)
             }
@@ -87,9 +88,11 @@ class ProfileViewModel @Inject constructor(
 
     private fun loadTheme() {
         viewModelScope.launch {
-            getAppThemeUseCase().collect { value ->
-                _darkMode.value = value
-            }
+            getAppThemeUseCase()
+                .distinctUntilChanged()
+                .collect { value ->
+                    _darkMode.value = value
+                }
         }
     }
 
