@@ -263,6 +263,14 @@
     <style name="CorneredImage">
         <item name="cornerSize">@dimen/radius_xl</item>
     </style>
+    <style name="CustomImageCorners">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">12dp</item>
+        <item name="cornerSizeTopRight">12dp</item>
+        <item name="cornerSizeBottomLeft">12dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
 
 
 </resources>
