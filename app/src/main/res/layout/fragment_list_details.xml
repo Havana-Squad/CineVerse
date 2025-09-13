@@ -14,19 +14,59 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_color">
+        android:background="@color/background_screen">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tip_background"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:padding="12dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/info_circle_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tip: Swipe left to remove movies from your collection."
+                android:layout_marginStart="28dp"
+                android:layout_marginEnd="24dp"
+                style="@style/Body_SM.Regular"
+                android:textColor="@color/shade_primary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/info_circle_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/lists"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:orientation="vertical"
             app:items="@{viewModel.listDetailsUIState.savedMedia}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_marginTop="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tip"
             tools:listitem="@layout/item_list_details" />
 
         <com.airbnb.lottie.LottieAnimationView

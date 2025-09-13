@@ -13,6 +13,10 @@ interface AppConfiguration {
 
     suspend fun getRequestDate(key: String): Long?
 
+    suspend fun getCategoryTipStatus(): Boolean
+
+    suspend fun closeCategoryTip()
+
 }
 
 class AppConfigurator @Inject constructor(private val dataStorePreferences: DataStorePreferences) :
@@ -34,9 +38,17 @@ class AppConfigurator @Inject constructor(private val dataStorePreferences: Data
         return dataStorePreferences.readLong(key)
     }
 
+    override suspend fun getCategoryTipStatus(): Boolean {
+        return dataStorePreferences.readBoolean(IS_CATEGORY_TIP_SHOWN) ?: true
+    }
+
+    override suspend fun closeCategoryTip() {
+        dataStorePreferences.writeBoolean(IS_CATEGORY_TIP_SHOWN, false)
+    }
 
 
     companion object DataStorePreferencesKeys {
         const val SESSION_ID_KEY = "session_id"
+        const val IS_CATEGORY_TIP_SHOWN = "category_details_tip"
     }
 }
