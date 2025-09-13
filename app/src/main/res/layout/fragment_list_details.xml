@@ -58,6 +58,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="16dp"
             android:padding="12dp"
+            app:isVisible="@{viewModel.listDetailsUIState.isTipShown}"
             app:layout_constraintTop_toBottomOf="@id/app_bar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -86,6 +87,7 @@
                 android:layout_width="16dp"
                 android:layout_height="15dp"
                 android:src="@drawable/x_icon"
+                android:onClick="@{() -> viewModel.closeTip()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
