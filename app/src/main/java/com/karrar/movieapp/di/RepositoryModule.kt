@@ -28,4 +28,11 @@ abstract class RepositoryModule {
     abstract fun bindAccountRepository(
         accountRepositoryImp: AccountRepositoryImp
     ): AccountRepository
+
+    @ViewModelScoped
+    @Binds
+    abstract fun bindTipRepository(
+        tipRepositoryImp: TipRepositoryImp
+    ): TipRepository
+
 }
