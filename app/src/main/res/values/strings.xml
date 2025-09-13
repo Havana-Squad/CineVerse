@@ -116,4 +116,6 @@
     <string name="e_g_my_watchlist">e.g. My Watchlist</string>
     <string name="cancel_txt">Cancel</string>
     <string name="create_txt">Create</string>
+    <string name="no_connection_header">Oops! No Internet</string>
+    <string name="no_connection_content">Looks like you\'re offline. Let\'s reconnect so you don\'t miss out!</string>
 </resources>

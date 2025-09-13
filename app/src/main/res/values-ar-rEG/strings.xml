@@ -13,4 +13,6 @@
     <string name="e_g_my_watchlist">مثال: قائمة مشاهدتي</string>
     <string name="cancel_txt">إلغاء</string>
     <string name="create_txt">إنشاء</string>
+    <string name="no_connection_header">اوبس! لا يوجد إنترنت</string>
+    <string name="no_connection_content">يبدو أنك غير متصل بالإنترنت. لنتواصل مجددًا حتى لا تفوتك الفرصة!</string>
 </resources>
