@@ -8,5 +8,5 @@ data class ListDetailsUIState(
     val isLoading: Boolean = false,
     val isEmpty: Boolean = false,
     val error: List<ErrorUIState> = emptyList(),
-    val isTipShown: Boolean = true
+    val isTipShown: Boolean? = null
 )
