@@ -1,40 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Top Reviews"
-        android:textColor="@color/shade_primary"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
 
-        />
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Show More"
-        android:textColor="@color/brand_primary"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+    <data>
+        <variable
+            name="reviews"
+            type="java.util.List&lt;com.karrar.movieapp.ui.movieDetails.movieDetailsUIState.ReviewUIState&gt;" />
 
-        />
-    <LinearLayout
+        <variable
+            name="listener"
+            type="com.karrar.movieapp.ui.movieDetails.DetailInteractionListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text"
-        android:orientation="vertical">
-        <include layout="@layout/item_movie_review"/>
-        <include layout="@layout/item_movie_review"/>
-        <include layout="@layout/item_movie_review"/>
-    </LinearLayout>
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp">
 
+        <TextView
+            android:id="@+id/tv_reviews_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Top Reviews"
+            android:textColor="@color/shade_primary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_show_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show More"
+            android:textColor="@color/brand_primary"
+            android:textSize="14sp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/reviews_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_reviews_title"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <include
+                android:id="@+id/review_item_1"
+                layout="@layout/item_movie_review"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:item="@{reviews.size() > 0 ? reviews.get(0) : null}"
+                app:isVisible="@{reviews.size() > 0}" />
+
+            <include
+                android:id="@+id/review_item_2"
+                layout="@layout/item_movie_review"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:item="@{reviews.size() > 1 ? reviews.get(1) : null}"
+                app:isVisible="@{reviews.size() > 1}" />
+
+            <include
+                android:id="@+id/review_item_3"
+                layout="@layout/item_movie_review"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:item="@{reviews.size() > 2 ? reviews.get(2) : null}"
+                app:isVisible="@{reviews.size() > 2}" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

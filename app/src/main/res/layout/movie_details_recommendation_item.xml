@@ -3,36 +3,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="movie"
+            type="com.karrar.movieapp.ui.movieDetails.movieDetailsUIState.MovieDetailsUIState" />
+
+        <variable
+            name="listener"
+            type="com.karrar.movieapp.ui.movieDetails.DetailInteractionListener" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/spacing_small"
-        android:layout_marginBottom="@dimen/spacing_medium">
+        android:layout_marginBottom="@dimen/spacing_medium"
+        android:clickable="true"
+        android:focusable="true"
+        >
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/image_trend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintDimensionRatio="1:1.4"
+            android:layout_width="120dp"
+            android:layout_height="170dp"
             android:scaleType="centerCrop"
             app:shapeAppearanceOverlay="@style/CardCorners.Medium"
-            tools:src="@drawable/trend"
+            app:mediaPoster="@{movie.image}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_movie_name"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
             app:layout_constraintStart_toStartOf="@id/image_trend"
+            app:layout_constraintEnd_toEndOf="@id/image_trend"
             app:layout_constraintTop_toBottomOf="@id/image_trend"
-            app:layout_constraintBaseline_toBottomOf="parent"
             android:textAppearance="@style/Body_MD.Medium"
             android:textColor="@color/shade_secondary"
-            android:text="knives out"
+            android:text="@{movie.name}"
             android:maxLines="1"
             android:ellipsize="end"
-            tools:text="Until Dawn"/>
+            tools:text="Until Dawn" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -50,16 +63,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="3.3"
+                android:text="@{movie.voteAverage}"
                 android:textAppearance="@style/Label_MD.Medium"
                 android:textColor="@color/shade_primary"
                 tools:text="7.5" />
+
             <ImageView
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:src="@drawable/ic_star"
-                android:layout_marginStart="@dimen/spacing_too_small"/>
+                android:layout_marginStart="@dimen/spacing_too_small" />
 
         </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

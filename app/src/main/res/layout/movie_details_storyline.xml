@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.karrar.movieapp.ui.movieDetails.movieDetailsUIState.MovieDetailsUIState" />
+
+        <variable
+            name="listener"
+            type="com.karrar.movieapp.ui.movieDetails.DetailInteractionListener" />
+    </data>
+
+    <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -18,9 +30,10 @@
         android:id="@+id/tv_storyline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as The Joker."
+        android:text="@{viewModel.review}"
         android:textColor="@color/shade_secondary"
         android:textSize="12sp"
         />
 
 </LinearLayout>
+</layout>

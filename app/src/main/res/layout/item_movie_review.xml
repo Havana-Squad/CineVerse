@@ -8,7 +8,6 @@
         <variable
             name="item"
             type="com.karrar.movieapp.ui.movieDetails.movieDetailsUIState.ReviewUIState" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
