@@ -61,4 +61,7 @@ class MyRatingsViewModel @Inject constructor(
         _ratedUiState.update { it.copy(error = emptyList()) }
         getData()
     }
+    override fun onClickExplore() {
+        _myRatingUIEvent.update { Event(MyRatingUIEvent.NavigateExploreEvent()) }
+    }
 }

@@ -12,4 +12,6 @@ class RatedMoviesAdapter(items: List<RatedUIState>, listener: RatedMoviesInterac
 
 interface RatedMoviesInteractionListener : BaseInteractionListener {
     fun onClickMovie(movieId: Int)
+    fun onClickExplore()
+
 }
