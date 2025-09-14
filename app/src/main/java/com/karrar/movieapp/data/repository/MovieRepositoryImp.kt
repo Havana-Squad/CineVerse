@@ -54,6 +54,19 @@ class MovieRepositoryImp @Inject constructor(
         return movieService.getRatedMovie().body()?.items
     }
 
+    override suspend fun deleteMovieFromCollection(
+        sessionId: String,
+        listId: Int,
+        movieId: Int
+    ): AddMovieDto? {
+        val res = movieService.deleteMovieFromCollection(
+            collectionId = listId,
+            sessionId = sessionId,
+            movieId = movieId
+        )
+        return res.body()
+    }
+
     override suspend fun setRating(movieId: Int, value: Float): RatingDto? {
         return movieService.postRating(movieId, value).body()
     }
@@ -209,17 +222,20 @@ class MovieRepositoryImp @Inject constructor(
 
 
     override suspend fun getTrendingMoviesPager(): Pager<Int, MovieDto> {
-        return Pager(config = config,
+        return Pager(
+            config = config,
             pagingSourceFactory = { movieMovieDataSource.trendingMovieDataSource })
     }
 
     override suspend fun getNowPlayingMoviesPager(): Pager<Int, MovieDto> {
-        return Pager(config = config,
+        return Pager(
+            config = config,
             pagingSourceFactory = { movieMovieDataSource.nowStreamingMovieMovieDataSource })
     }
 
     override suspend fun getUpcomingMoviesPager(): Pager<Int, MovieDto> {
-        return Pager(config = config,
+        return Pager(
+            config = config,
             pagingSourceFactory = { movieMovieDataSource.upcomingMovieMovieDataSource })
     }
 

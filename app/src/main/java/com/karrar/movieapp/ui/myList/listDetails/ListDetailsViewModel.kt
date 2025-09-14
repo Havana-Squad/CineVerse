@@ -2,6 +2,7 @@ package com.karrar.movieapp.ui.myList.listDetails
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.karrar.movieapp.domain.usecases.mylist.DeleteMovieFromMyListUseCase
 import com.karrar.movieapp.domain.usecases.mylist.GetMyMediaListDetailsUseCase
 import com.karrar.movieapp.domain.usecases.tip.CloseCategoryTipUseCase
 import com.karrar.movieapp.domain.usecases.tip.GetCategoryTipStatusUseCase
@@ -25,6 +26,7 @@ class ListDetailsViewModel @Inject constructor(
     private val getCategoryTipStatusUseCase: GetCategoryTipStatusUseCase,
     private val closeCategoryTipUseCase: CloseCategoryTipUseCase,
     private val mediaUIStateMapper: MediaUIStateMapper,
+    private val deleteMovieFromMyListUseCase: DeleteMovieFromMyListUseCase,
     saveStateHandle: SavedStateHandle
 ) : BaseViewModel(), ListDetailsInteractionListener {
 
@@ -72,6 +74,22 @@ class ListDetailsViewModel @Inject constructor(
 
     override fun onItemClick(item: SavedMediaUIState) {
         _listDetailsUIEvent.update { Event(ListDetailsUIEvent.OnItemSelected(item)) }
+    }
+
+    override fun onDeleteBtnClick(item: Int) {
+        viewModelScope.launch {
+            try {
+                deleteMovieFromMyListUseCase(args.id, item)
+            }catch (t: Throwable){
+                _listDetailsUIState.update {
+                    it.copy(
+                        error = listOf(
+                            ErrorUIState(0, t.message.toString())
+                        )
+                    )
+                }
+            }
+        }
     }
 
     fun closeTip(){

@@ -100,4 +100,6 @@ interface MovieRepository {
 
     suspend fun getRatedMovie(): List<RatedMoviesDto>?
 
+    suspend fun deleteMovieFromCollection(sessionId: String, listId: Int, movieId: Int) : AddMovieDto?
+
 }

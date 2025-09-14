@@ -128,5 +128,15 @@
                 app:shapeAppearanceOverlay="@style/CardCorners.Image"
                 tools:src="@drawable/test" />
         </androidx.constraintlayout.motion.widget.MotionLayout>
+
+        <View
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="20dp"
+            android:onClick="@{() -> listener.onDeleteBtnClick(item.mediaID)}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+        </View>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
