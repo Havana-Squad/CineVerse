@@ -30,6 +30,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/arrow_left_back_icon"
+                android:onClick="@{() -> viewModel.onBackBtnClicked()}"
                 android:layout_marginStart="8dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

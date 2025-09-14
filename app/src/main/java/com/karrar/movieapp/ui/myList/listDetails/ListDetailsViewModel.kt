@@ -118,5 +118,9 @@ class ListDetailsViewModel @Inject constructor(
             }
         }
     }
+
+    fun onBackBtnClicked(){
+        _listDetailsUIEvent.update { Event(ListDetailsUIEvent.OnBackBtnClicked) }
+    }
 }
 
