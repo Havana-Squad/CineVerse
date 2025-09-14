@@ -80,6 +80,16 @@ class ListDetailsViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 deleteMovieFromMyListUseCase(args.id, item)
+                val currentList = _listDetailsUIState.value.savedMedia.toMutableList()
+                currentList.removeAll { it.mediaID == item }
+
+                _listDetailsUIState.update {
+                    it.copy(
+                        savedMedia = currentList,
+                        isEmpty = currentList.isEmpty(),
+                        error = emptyList()
+                    )
+                }
             }catch (t: Throwable){
                 _listDetailsUIState.update {
                     it.copy(
@@ -108,6 +118,5 @@ class ListDetailsViewModel @Inject constructor(
             }
         }
     }
-
 }
 

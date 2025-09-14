@@ -22,7 +22,7 @@ class DeleteMovieFromMyListUseCase @Inject constructor(
     private suspend fun deleteMovieFromList(listID: Int, mediaId: Int): String {
         val sessionID = accountRepository.getSessionId()
         return sessionID?.let {
-            val res = movieRepository.deleteMovieFromCollection(
+            movieRepository.deleteMovieFromCollection(
                 sessionId = it,
                 listId = listID,
                 movieId = mediaId
