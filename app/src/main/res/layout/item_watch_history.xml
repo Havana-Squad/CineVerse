@@ -86,8 +86,9 @@
                     android:ellipsize="end"
                     android:maxLines="2"
                     android:text="@{item.movieTitle}"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/image_movie"
-                    app:layout_constraintTop_toTopOf="@id/background_card"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:text="The Mandalorian" />
 
                 <TextView

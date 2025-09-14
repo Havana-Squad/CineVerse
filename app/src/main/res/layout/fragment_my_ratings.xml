@@ -38,13 +38,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            app:doneLoad="@{viewModel.ratedUiState.loading}"
-            app:emptyData="@{viewModel.ratedUiState.ratedList}"
+            app:isVisible="@{!viewModel.ratedUiState.loading &amp;&amp; viewModel.ratedUiState.ratedList.empty &amp;&amp; viewModel.ratedUiState.error.empty}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:noError="@{viewModel.ratedUiState.error}" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"

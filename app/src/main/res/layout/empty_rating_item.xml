@@ -9,7 +9,7 @@
 
         <variable
             name="listener"
-            type="com.karrar.movieapp.ui.profile.watchhistory.WatchHistoryInteractionListener" />
+            type="com.karrar.movieapp.ui.profile.myratings.RatedMoviesInteractionListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
