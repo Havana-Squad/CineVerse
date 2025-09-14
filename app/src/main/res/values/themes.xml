@@ -274,6 +274,12 @@
     <style name="CorneredImage">
         <item name="cornerSize">@dimen/radius_xl</item>
     </style>
-
+    <style name="CardCorners.Small_img">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/radius_lg</item>
+        <item name="cornerSizeTopRight">@dimen/radius_lg</item>
+        <item name="cornerSizeBottomLeft">@dimen/radius_lg</item>
+        <item name="cornerSizeBottomRight">0dp</item> <!-- أو @dimen/radius_lg حسب التصميم -->
+    </style>
 
 </resources>

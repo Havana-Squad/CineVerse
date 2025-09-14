@@ -57,4 +57,14 @@ class WatchHistoryViewModel @Inject constructor(
         _watchHistoryUIEvent.update { Event(WatchHistoryUIEvent.NavigateExploreEvent()) }
     }
 
+    override fun onSwipeToDelete(item: MediaHistoryUiState) {
+        viewModelScope.launch {
+            try {
+                val entityToDelete = watchHistoryMapper.mapToEntity(item)
+                getWatchHistoryUseCase.deleteWatchHistory(entityToDelete)
+            } catch (t: Throwable) {
+                _uiState.update { it.copy(error = listOf(Error(400, t.message.toString()))) }
+            }
+        }
+    }
 }

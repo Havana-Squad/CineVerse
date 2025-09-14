@@ -2,11 +2,13 @@ package com.karrar.movieapp.data.local.database
 
 import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
+import com.google.common.reflect.TypeToken
 import com.google.gson.Gson
+import com.karrar.movieapp.domain.models.Genre
 import javax.inject.Inject
 
 @ProvidedTypeConverter
-class Converters @Inject constructor(val gson : Gson) {
+class Converters @Inject constructor(val gson: Gson) {
 
     @TypeConverter
     fun listToJson(value: List<String>): String = gson.toJson(value)

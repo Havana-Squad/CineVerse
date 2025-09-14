@@ -32,7 +32,7 @@ class WatchHistoryFragment : BaseFragment<FragmentWatchHistoryBinding>() {
         val action = when (event) {
             is WatchHistoryUIEvent.MovieEvent -> {
                 WatchHistoryFragmentDirections.actionWatchHistoryFragmentToMovieDetailFragment(
-                    event.movieID
+                    event.movie_id
                 )
             }
             is WatchHistoryUIEvent.TVShowEvent -> {
