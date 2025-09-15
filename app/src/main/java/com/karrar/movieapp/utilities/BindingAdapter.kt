@@ -162,7 +162,7 @@ fun bindMovieImage(image: ImageView, imageURL: String?) {
     imageURL?.let {
         image.load(imageURL) {
             placeholder(R.drawable.loading)
-            error(R.drawable.ic_profile_place_holder)
+            error(R.drawable.profile)
         }
     }
 }
