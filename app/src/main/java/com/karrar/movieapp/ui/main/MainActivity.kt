@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         setTheme(R.style.Theme_MovieApp)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-
+        setupStartDestination()
         observeAppTheme()
         observeAppLanguage()
 
@@ -56,6 +57,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun observeAppLanguage() {
         lifecycleScope.launch {
             viewModel.language.collect { lang ->
@@ -83,9 +85,25 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    private fun setupStartDestination() {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
 
-    override fun onResume() {
-        super.onResume()
+        lifecycleScope.launch {
+            viewModel.isFirstLaunch.collect { firstLaunch ->
+                val graph = navController.navInflater.inflate(R.navigation.movie_navigation)
+                graph.setStartDestination(
+                    if (firstLaunch) R.id.onboardingFragment else R.id.homeFragment
+                )
+                navController.graph = graph
+                setupBottomNav(navController)
+            }
+        }
+    }
+
+
+    private fun setupBottomNav(navController: NavController) {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment,
@@ -94,7 +112,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.profileFragment,
             )
         )
-        val navController = findNavController(R.id.nav_host_fragment)
         binding.bottomNavigation.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
@@ -104,7 +121,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun setBottomNavigationVisibility(navController: NavController) {
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            binding.bottomNavigation.isVisible = destination.id != R.id.loginFragment
+            binding.bottomNavigation.isVisible = destination.id !in listOf(
+                R.id.loginFragment,
+                R.id.onboardingFragment
+            )
         }
     }
 
