@@ -71,7 +71,8 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:src="@drawable/ic_star"
-                android:layout_marginStart="@dimen/spacing_too_small"/>
+                android:layout_marginStart="@dimen/spacing_too_small"
+                app:tint="@color/primary_yellow" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
