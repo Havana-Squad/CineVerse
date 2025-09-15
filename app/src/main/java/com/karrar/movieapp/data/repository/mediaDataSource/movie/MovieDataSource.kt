@@ -14,7 +14,6 @@ class MovieDataSource @Inject constructor(
         val pageNumber = params.key ?: 1
         return try {
             val response = service.getAllMovies(pageNumber)
-            Log.d("Exploring", "load: code: ${response.code()}, message: ${response.message()}, body: ${response.body()}")
             LoadResult.Page(
                 data = response.body()?.items as List<MovieDto>,
                 prevKey = null,
