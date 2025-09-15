@@ -6,4 +6,5 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="take_to_website">You’ll be taken to the website to update your name, username, or profile picture.</string>
     <string name="go_to_website">Go to Website</string>
+    <string name="get_started">Get Started</string>
 </resources>
