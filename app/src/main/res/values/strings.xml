@@ -118,4 +118,17 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="take_to_website">You’ll be taken to the website to update your name, username, or profile picture.</string>
     <string name="go_to_website">Go to Website</string>
+    <string name="collection_item">%1$s movies</string>
+    <string name="start_collecting">Start Collecting</string>
+    <string name="no_collection_content_text">Start building your personal library by saving movies or series you want to remember.</string>
+    <string name="no_collections_header">No Collections Yet</string>
+    <string name="need_login_header">You\'re Almost There!</string>
+    <string name="need_login_content">Log in to save movies, create collections, and get personalized recommendations.</string>
+    <string name="create_new_collection">Create New Collection</string>
+    <string name="collection_name">Collection Name</string>
+    <string name="e_g_my_watchlist">e.g. My Watchlist</string>
+    <string name="cancel_txt">Cancel</string>
+    <string name="create_txt">Create</string>
+    <string name="no_connection_header">Oops! No Internet</string>
+    <string name="no_connection_content">Looks like you\'re offline. Let\'s reconnect so you don\'t miss out!</string>
 </resources>

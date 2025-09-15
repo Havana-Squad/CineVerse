@@ -4,7 +4,7 @@
         <item name="colorPrimary">@color/brand_color</item>
         <item name="colorPrimaryVariant">@color/background_color</item>
 
-        <item name="android:statusBarColor">@color/background_color</item>
+        <item name="android:statusBarColor">@color/background_screen</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
 
         <item name="textInputStyle">@style/Login</item>
@@ -278,5 +278,12 @@
         <item name="cornerSize">@dimen/radius_xl</item>
     </style>
 
+    <style name="Round20">
+        <item name="cornerSize">20%</item>
+    </style>
+
+    <style name="RoundFAB" parent="Widget.Design.FloatingActionButton">
+        <item name="shapeAppearanceOverlay">@style/Round20</item>
+    </style>
 
 </resources>
