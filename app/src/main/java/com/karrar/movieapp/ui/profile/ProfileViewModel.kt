@@ -1,9 +1,5 @@
 package com.karrar.movieapp.ui.profile
 
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.viewModelScope
 import com.karrar.movieapp.domain.usecases.CheckIfLoggedInUseCase
 import com.karrar.movieapp.domain.usecases.GetAccountDetailsUseCase
@@ -19,11 +15,10 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import androidx.core.net.toUri
-import kotlinx.coroutines.flow.distinctUntilChanged
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
@@ -44,7 +39,7 @@ class ProfileViewModel @Inject constructor(
         MutableStateFlow(Event(null))
     val profileUIEvent = _profileUIEvent.asStateFlow()
 
-    private val _darkMode = MutableStateFlow(false)
+    private val _darkMode = MutableStateFlow(true)
     val darkMode = _darkMode.asStateFlow()
 
     private val _language = MutableStateFlow("en")
