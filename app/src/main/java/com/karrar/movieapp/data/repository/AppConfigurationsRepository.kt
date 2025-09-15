@@ -8,4 +8,7 @@ interface AppConfigurationsRepository {
 
     fun getAppLanguage(): Flow<String>
     suspend fun setAppLanguage(language: String)
+
+    fun isFirstLaunch(): Flow<Boolean>
+    suspend fun setFirstLaunchDone()
 }
