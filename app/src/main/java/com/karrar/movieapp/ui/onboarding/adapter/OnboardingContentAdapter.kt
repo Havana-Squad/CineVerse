@@ -14,8 +14,8 @@ class OnboardingContentAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(page: OnboardingText) {
-            binding.title.text = page.title
-            binding.description.text = page.description
+            binding.title.text = itemView.context.getString(page.title)
+            binding.description.text = itemView.context.getString(page.description)
         }
     }
 
