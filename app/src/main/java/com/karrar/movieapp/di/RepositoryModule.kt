@@ -31,6 +31,12 @@ abstract class RepositoryModule {
 
     @ViewModelScoped
     @Binds
+    abstract fun bindAppConfigurationsRepository(
+        appConfigurationsRepositoryImp: AppConfigurationsRepositoryImpl
+    ): AppConfigurationsRepository
+
+    @ViewModelScoped
+    @Binds
     abstract fun bindTipRepository(
         tipRepositoryImp: TipRepositoryImp
     ): TipRepository

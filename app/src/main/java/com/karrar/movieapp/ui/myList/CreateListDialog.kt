@@ -25,6 +25,14 @@ class CreateListDialog : BaseDialogFragment<FragmentCreateListDialogBinding>() {
                 }
             }
         }
+
+        binding.editText.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                binding.listName.hint = ""
+            } else if (!hasFocus && binding.editText.text.isNullOrEmpty()) {
+                binding.listName.hint = getString(R.string.e_g_my_watchlist)
+            }
+        }
     }
 
     private fun dismissDialog() {

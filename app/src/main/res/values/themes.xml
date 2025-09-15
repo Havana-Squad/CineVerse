@@ -159,8 +159,22 @@
     </style>
 
 
+    <style name="ProfileButton" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">@dimen/radius_full</item>
+        <item name="backgroundTint">@color/background_card</item>
+        <item name="iconTint">@color/brand_primary</item>
+        <item name="iconGravity">textStart</item>
+        <item name="android:textColor">@color/shade_primary</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:textAppearance">@style/Label_MD.Medium</item>
+    </style>
 
-                                    <!--    NEW-->
+
+
+    <!--    NEW-->
 
     <!-- ========= Display ========= -->
     <style name="Text_Display_XL">
@@ -274,5 +288,12 @@
         <item name="cornerSizeBottomLeft">@dimen/radius_lg</item>
     </style>
 
+    <style name="Round20">
+        <item name="cornerSize">20%</item>
+    </style>
+
+    <style name="RoundFAB" parent="Widget.Design.FloatingActionButton">
+        <item name="shapeAppearanceOverlay">@style/Round20</item>
+    </style>
 
 </resources>
