@@ -100,15 +100,17 @@
         android:id="@+id/profileFragment"
         android:name="com.karrar.movieapp.ui.profile.ProfileFragment"
         tools:layout="@layout/fragment_profile">
-        <action
-            android:id="@+id/action_profileFragment_to_logoutDialog"
-            app:destination="@id/logoutDialog" />
+
         <action
             android:id="@+id/action_profileFragment_to_ratedMoviesFragment"
             app:destination="@id/ratedMoviesFragment" />
         <action
             android:id="@+id/action_profileFragment_to_watchHistoryFragment"
             app:destination="@id/watchHistoryFragment" />
+
+        <action
+            android:id="@+id/action_profileFragment_to_MyCollectionFragment"
+            app:destination="@id/myListFragment" />
 
         <action
             android:id="@+id/action_profileFragment_to_loginFragment"
@@ -221,16 +223,18 @@
             app:argType="integer" />
     </dialog>
 
-    <dialog
-        android:id="@+id/logoutDialog"
-        android:name="com.karrar.movieapp.ui.profile.logout.LogoutDialog"
+    <fragment
+        android:id="@+id/logoutBottomSheetFragment"
+        android:name="com.karrar.movieapp.ui.profile.logout.LogoutBottomSheetFragment"
         tools:layout="@layout/dialog_logout">
         <action
-            android:id="@+id/action_logoutDialog_to_homeFragment"
+            android:id="@+id/action_logoutBottomSheetFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
-    </dialog>
+    </fragment>
+
+
     <dialog
         android:id="@+id/createSavedList"
         android:name="com.karrar.movieapp.ui.myList.CreateListDialog"
