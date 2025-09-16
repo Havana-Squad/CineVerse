@@ -8,5 +8,5 @@ data class RatedUIState(
     var mediaType: String = "",
     val releaseDate: String,
     var movieDuration: Int,
-    val genres: String
+    val genres: List<String>,
 )

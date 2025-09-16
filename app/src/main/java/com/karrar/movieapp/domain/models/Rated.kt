@@ -7,6 +7,6 @@ data class Rated(
     val rating: Float,
     val releaseDate: String,
     var mediaType:String,
-    val genres: String,
+    val genres: List<Int>,
     var movieDuration: Int,
 )

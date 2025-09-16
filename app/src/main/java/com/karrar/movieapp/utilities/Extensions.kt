@@ -1,5 +1,6 @@
 package com.karrar.movieapp.utilities
 
+import android.content.Context
 import android.content.res.Resources
 import android.graphics.Rect
 import android.view.LayoutInflater
@@ -37,6 +38,18 @@ fun <T> ChipGroup.createChip(item: GenreUIState, listener: T): View {
     chipBinding.listener = listener as CategoryInteractionListener
     return chipBinding.root
 }
+
+fun String.convertToDayMonthYearFormat(
+    inputFormat: String = "yyyy-MM-dd",
+    outputFormat: String = "yyyy, MMM dd"
+): String? {
+    val date = SimpleDateFormat(inputFormat, Locale.getDefault()).parse(this) ?: return null
+    val formatter = SimpleDateFormat(outputFormat, Locale.getDefault())
+    return formatter.format(date)
+}
+
+fun Int.dpToPx(context: Context): Int =
+    (this * context.resources.displayMetrics.density).toInt()
 
 
 fun List<ResultDto?>.getKey(): String? = this.map {
@@ -97,6 +110,7 @@ fun <T : Any> GridLayoutManager.setSpanSize(
         }
     }
 }
+
 
 fun Date.convertToDayMonthYearFormat(): String {
     val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())

@@ -13,7 +13,7 @@ class RatedUIStateMapper @Inject constructor() :Mapper<Rated,RatedUIState>  {
             rating = input.rating,
             mediaType = input.mediaType,
             releaseDate = input.releaseDate,
-            genres = input.genres,
+            genres =  emptyList(),
             movieDuration = input.movieDuration,
         )
     }

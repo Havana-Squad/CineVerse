@@ -250,6 +250,10 @@
         <item name="android:fontFamily">@font/manrope_medium</item>
     </style>
 
+    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+    </style>
+
     <style name="Body_MD.SemiBold">
         <item name="android:fontFamily">@font/manrope_semibold</item>
     </style>

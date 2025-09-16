@@ -33,4 +33,6 @@ data class RatedTvShowDto(
     val genres: String? = null,
     @SerializedName("movie_duration")
     val movieDuration: Int? = null,
+    @SerializedName("first_air_date")
+    val firstAirDate: String? = null
 )
