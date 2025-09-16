@@ -9,6 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.karrar.movieapp.R
 import com.karrar.movieapp.databinding.FragmentOnboardingBinding
 import com.karrar.movieapp.ui.base.BaseFragment
+import com.karrar.movieapp.ui.base.BaseInteractionListener
 import com.karrar.movieapp.ui.onboarding.adapter.OnboardingContentAdapter
 import com.karrar.movieapp.ui.onboarding.adapter.OnboardingImageAdapter
 import com.karrar.movieapp.utilities.setSystemBarsColor
@@ -23,8 +24,13 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
 
         setupUI()
 
-        val imageAdapter = OnboardingImageAdapter(viewModel.imagePages)
-        val textAdapter = OnboardingContentAdapter(viewModel.textPages)
+        val imageAdapter = OnboardingImageAdapter(
+            viewModel.imagePages,
+            listener = object : BaseInteractionListener {})
+        val textAdapter = OnboardingContentAdapter(
+            viewModel.textPages,
+             object : BaseInteractionListener {}
+        )
 
         binding.onboardingImagePager.adapter = imageAdapter
         binding.onboardingContentPager.adapter = textAdapter

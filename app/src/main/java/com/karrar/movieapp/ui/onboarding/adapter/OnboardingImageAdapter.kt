@@ -1,31 +1,17 @@
 package com.karrar.movieapp.ui.onboarding.adapter
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import com.karrar.movieapp.databinding.ItemOnboardingImageBinding
+import com.karrar.movieapp.R
+import com.karrar.movieapp.ui.base.BaseAdapter
+import com.karrar.movieapp.ui.base.BaseInteractionListener
 
 class OnboardingImageAdapter(
-    private val images: List<Int>
-) : RecyclerView.Adapter<OnboardingImageAdapter.ImageViewHolder>() {
+    items: List<Int>,
+    listener: BaseInteractionListener
+) : BaseAdapter<Int>(items, listener) {
 
-    class ImageViewHolder(private val binding: ItemOnboardingImageBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(imageRes: Int) {
-            binding.pagerImage.setImageResource(imageRes)
-        }
-    }
+    override val layoutID: Int = R.layout.item_onboarding_image
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
-        val binding = ItemOnboardingImageBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false
-        )
-        return ImageViewHolder(binding)
-    }
+    override fun areItemsSame(oldItem: Int, newItem: Int): Boolean = oldItem == newItem
 
-    override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-        holder.bind(images[position])
-    }
-
-    override fun getItemCount(): Int = images.size
+    override fun areContentSame(oldPosition: Int, newPosition: Int): Boolean = oldPosition == newPosition
 }
