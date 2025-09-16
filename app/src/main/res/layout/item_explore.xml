@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.karrar.movieapp.ui.explore.exploreUIState.MediaUIState" />
+
+        <variable
+            name="listener"
+            type="com.karrar.movieapp.ui.explore.ExploreInteractionListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_small"
+        android:layout_marginBottom="@dimen/spacing_medium">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_trend"
+            android:layout_width="match_parent"
+            android:layout_height="208dp"
+            app:layout_constraintDimensionRatio="1:1.4"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/CardCorners.Medium"
+            tools:src="@drawable/trend"
+            app:posterImage="@{item.mediaImage}"
+            android:onClick="@{() -> listener.onClickMedia(item)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            app:layout_constraintStart_toStartOf="@id/image_trend"
+            app:layout_constraintTop_toBottomOf="@id/image_trend"
+            app:layout_constraintBaseline_toBottomOf="parent"
+            android:textAppearance="@style/Body_MD.Medium"
+            android:textColor="@color/shade_secondary"
+            android:text="@{item.mediaName}"
+            android:maxLines="1"
+            android:ellipsize="end"
+            tools:text="Until Dawn"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:paddingVertical="@dimen/spacing_too_small"
+            android:paddingStart="@dimen/spacing_small"
+            android:paddingEnd="6dp"
+            android:background="@drawable/rating_chip_background">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{item.mediaAverageRating}"
+                android:textAppearance="@style/Label_MD.Medium"
+                android:textColor="@color/shade_primary"
+                tools:text="7.5"/>
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_star"
+                android:layout_marginStart="@dimen/spacing_too_small"
+                app:tint="@color/primary_yellow" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

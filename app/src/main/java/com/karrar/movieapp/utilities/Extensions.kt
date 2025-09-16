@@ -18,10 +18,12 @@ import com.karrar.movieapp.R
 import com.karrar.movieapp.data.remote.response.MyListsDto
 import com.karrar.movieapp.data.remote.response.trailerVideosDto.ResultDto
 import com.karrar.movieapp.databinding.ChipItemCategoryBinding
+import com.karrar.movieapp.databinding.ChipItemExploreCategoryBinding
 import com.karrar.movieapp.ui.adapters.LoadUIStateAdapter
 import com.karrar.movieapp.ui.base.BasePagingAdapter
 import com.karrar.movieapp.ui.category.CategoryInteractionListener
 import com.karrar.movieapp.ui.category.uiState.GenreUIState
+import com.karrar.movieapp.ui.explore.ExploreInteractionListener
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -39,6 +41,15 @@ fun <T> ChipGroup.createChip(item: GenreUIState, listener: T): View {
     return chipBinding.root
 }
 
+fun ChipGroup.createChip(item: com.karrar.movieapp.ui.explore.exploreUIState.GenreUIState, listener: ExploreInteractionListener, selectedChip: Int?): View {
+    val chipBinding: ChipItemExploreCategoryBinding = DataBindingUtil.inflate(
+        LayoutInflater.from(context), R.layout.chip_item_explore_category, this, false
+    )
+    chipBinding.exploreChip.isSelected = selectedChip == item.genreID
+    chipBinding.item = item
+    chipBinding.listener = listener
+    return chipBinding.root
+}
 fun String.convertToDayMonthYearFormat(
     inputFormat: String = "yyyy-MM-dd",
     outputFormat: String = "yyyy, MMM dd"

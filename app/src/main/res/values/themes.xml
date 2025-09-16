@@ -89,7 +89,13 @@
     </style>
 
     <style name="CardCorners.Medium">
-        <item name="cornerSize">@dimen/radius_medium</item>
+        <item name="cornerSize">@dimen/radius_lg</item>
+    </style>
+    <style name="CardCorners.SharpBottomRight">
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">@dimen/radius_lg</item>
+        <item name="cornerSizeTopLeft">@dimen/radius_lg</item>
+        <item name="cornerSizeTopRight">@dimen/radius_lg</item>
     </style>
 
     <style name="Login" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
@@ -156,6 +162,16 @@
     <style name="Regular.Small.Primary">
         <item name="android:textColor">@color/shade_primary_color</item>
 
+    </style>
+
+    <style name="IconOnlyButton" parent="Widget.Material3.Button.UnelevatedButton">
+        <item name="iconPadding">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
     </style>
 
 
