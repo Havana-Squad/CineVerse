@@ -31,4 +31,5 @@ object ErrorUI {
     const val NO_LOGIN = "NoLogin"
     const val EMPTY_FIELD = "EMPTY_FIELD"
     const val EMPTY_BODY = "EMPTY_BODY"
+    const val ITEM_NOT_EXIST = "ITEM_NOT_EXIST"
 }

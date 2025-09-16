@@ -13,7 +13,7 @@ class DeleteMovieFromMyListUseCase @Inject constructor(
     suspend operator fun invoke(listID: Int, mediaId: Int): String {
         val result = movieRepository.getListDetails(listID)
         return if (result?.checkIfExist(mediaId) == false) {
-            "Fail: this movie is not in the list"
+            throw Throwable(ErrorUI.ITEM_NOT_EXIST)
         } else {
             deleteMovieFromList(listID = listID, mediaId = mediaId)
         }
