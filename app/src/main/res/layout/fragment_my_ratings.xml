@@ -17,6 +17,7 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
+            app:titleTextAppearance="@style/Title_dis"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/background_screen"
@@ -31,17 +32,17 @@
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:tabBackground="@color/background_screen"
             app:tabGravity="fill"
             app:tabIndicatorColor="@color/brand_primary"
-            android:layout_marginHorizontal="16dp"
             app:tabMode="fixed"
             app:tabSelectedTextColor="@color/brand_primary"
-            app:tabTextColor="@color/shade_tertiary"
-            app:tabTextAppearance="@style/TabTextAppearance" />
+            app:tabTextAppearance="@style/TabTextAppearance"
+            app:tabTextColor="@color/shade_tertiary" />
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"

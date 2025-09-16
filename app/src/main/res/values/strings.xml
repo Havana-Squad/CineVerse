@@ -125,6 +125,7 @@
     <string name="my_collections">My Collections</string>
     <string name="my_profile">My Profile</string>
     <string name="my_ratings_">My Ratings</string>
+
     <string name="need_login_content">Need Login Content</string>
     <string name="need_login_header">Need Login Header</string>
     <string name="no_collection_content_text">No Collection Content</string>

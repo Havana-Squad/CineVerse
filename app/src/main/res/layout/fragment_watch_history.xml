@@ -15,18 +15,31 @@
         android:layout_height="match_parent"
         android:background="@color/background_color">
 
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            app:titleTextAppearance="@style/Title_dis"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/arrow_left_back_icon"
+            app:title="@string/history"
+            app:titleTextColor="@color/shade_primary" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_watch_history"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:clipToPadding="false"
+            android:paddingTop="@dimen/spacing_medium"
             android:paddingBottom="@dimen/spacing_medium"
             app:items="@{viewModel.uiState.allMedia}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
             tools:listitem="@layout/item_watch_history" />
 
         <include
