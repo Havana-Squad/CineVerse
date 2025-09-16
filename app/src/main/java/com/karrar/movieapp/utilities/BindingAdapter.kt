@@ -252,3 +252,7 @@ fun <T> showWhenTextNotEmpty(view: View,text:String){
     view.isVisible = text.isNotEmpty()
 }
 
+@BindingAdapter("imageRes")
+fun ImageView.setImageRes(resId: Int?) {
+    resId?.let { setImageResource(it) }
+}
