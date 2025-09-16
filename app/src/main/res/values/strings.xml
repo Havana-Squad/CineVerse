@@ -70,7 +70,7 @@
     <string name="rated_movies">My Ratings</string>
     <string name="sign_out">Sign Out</string>
     <string name="at">\@</string>
-    <string name="are_you_sure">Are You Sure?</string>
+    <string name="are_you_sure">Are you sure you want to logout?</string>
     <string name="you_re_about_to_sign_out_of_your_account">You’re about to sign out of your account.</string>
     <string name="cancel">Cancel</string>
     <string name="logout">Sign Out</string>
@@ -102,10 +102,4 @@
     <string name="this_list_has_no_lists">No lists found</string>
     <string name="episode_title">%1$d. %2$s</string>
     <string name="season_number">(%1$s Seasons)</string>
-    <string name="no_history_yet">No History Yet</string>
-    <string name="no_history_description">It’s quiet in here… Start watching and we’ll keep track for you.</string>
-    <string name="watch_something">Find Something to Watch</string>
-    <string name="no_ratings_yet">No Ratings Yet</string>
-    <string name="rate_dec">Rate movies and series you’ve watched to track what you love, and what you don’t.</string>
-    <string name="start_rating">Start Rating</string>
 </resources>
