@@ -1,6 +1,5 @@
 package com.karrar.movieapp.domain.mappers.savedList
 
-import android.util.Log
 import com.karrar.movieapp.BuildConfig
 import com.karrar.movieapp.data.remote.response.SavedListDto
 import com.karrar.movieapp.domain.mappers.Mapper
@@ -24,7 +23,6 @@ class SaveListDetailsMapper @Inject constructor() : Mapper<SavedListDto, SaveLis
 
     private fun String?.toFormattedDate(): String {
         if (this == null) return ""
-        Log.d("dddd", this)
         val inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         val outputFormatter = DateTimeFormatter.ofPattern("yyyy, MMM dd", Locale.ENGLISH)
 
