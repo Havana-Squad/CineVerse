@@ -35,6 +35,10 @@ abstract class BaseAdapter<T>(
         }
     }
 
+    fun getItemAt(position: Int): T = items[position]
+
+
+
     class ItemViewHolder(val binding: ViewDataBinding) : BaseViewHolder(binding)
 
     abstract class BaseViewHolder(binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root)

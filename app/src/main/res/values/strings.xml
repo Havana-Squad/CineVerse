@@ -6,7 +6,7 @@
     <string name="latest">Latest</string>
     <string name="popular">Popular</string>
     <string name="tv_shows">TV Shows</string>
-    <string name="search_hint">Search for a movie, tv show, person…</string>
+    <string name="search_hint">Search…</string>
     <string name="movies_chip">Movies</string>
     <string name="tv_shows_chip">TV Shows</string>
     <string name="actors_label">Actors</string>
@@ -23,6 +23,7 @@
     <string name="birthday">Birthday</string>
     <string name="biography">Biography</string>
     <string name="movies">Movies</string>
+    <string name="series">Series</string>
     <string name="actors">Actors</string>
     <string name="oops">Oops!</string>
     <string name="description">There is no internet connection\nPlease check it out</string>
