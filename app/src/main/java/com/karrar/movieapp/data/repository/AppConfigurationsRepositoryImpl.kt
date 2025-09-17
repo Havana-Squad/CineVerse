@@ -23,4 +23,12 @@ class AppConfigurationsRepositoryImpl @Inject constructor(
     override suspend fun setAppLanguage(language: String) {
         dataSource.setAppLanguage(language)
     }
+
+    override fun isFirstLaunch(): Flow<Boolean> {
+        return dataSource.isFirstLaunch
+    }
+
+    override suspend fun setFirstLaunchDone() {
+        dataSource.setFirstLaunch()
+    }
 }

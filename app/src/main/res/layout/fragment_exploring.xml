@@ -11,254 +11,187 @@
 
     </data>
 
-    <androidx.constraintlayout.motion.widget.MotionLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_color"
+        android:background="@color/background_screen"
         app:layoutDescription="@xml/fragment_exploring_scene">
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/animation_lost_connection"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:layout_marginBottom="@dimen/spacing_small"
-            app:layout_constraintBottom_toTopOf="@+id/title_lost_connection"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:lottie_autoPlay="true"
-            app:lottie_rawRes="@raw/lost_internet_animation"
-            app:showWhenListNotEmpty="@{viewModel.uiState.error}" />
-
-        <TextView
-            android:id="@+id/title_lost_connection"
-            style="@style/SemiBold.Large"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_extra_large"
-            android:text="@string/oops"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_trend_label"
-            app:showWhenListNotEmpty="@{viewModel.uiState.error}" />
-
-        <TextView
-            android:id="@+id/description_lost_connection"
-            style="@style/Regular.Medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_medium"
-            android:gravity="center"
-            android:text="@string/description"
-            android:textColor="@color/brand_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title_lost_connection"
-            app:showWhenListNotEmpty="@{viewModel.uiState.error}" />
-
-        <Button
-            android:id="@+id/button_retry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_medium"
-            android:onClick="@{() -> viewModel.getData()}"
-            android:text="@string/retry"
-            android:textColor="@color/white_primary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/description_lost_connection"
-            app:showWhenListNotEmpty="@{viewModel.uiState.error}" />
-
-        <!--        layout-->
-
-        <TextView
-            android:id="@+id/text_explore"
-            style="@style/SemiBold.Large"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:paddingVertical="12dp"
-            android:paddingStart="@dimen/spacing_medium"
-            android:text="@string/explore_label"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
+        <LinearLayout
             android:id="@+id/input_search"
-            style="@style/Regular.Medium"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginHorizontal="@dimen/spacing_medium"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:background="@drawable/edit_text_background"
-            android:drawableStart="@drawable/ic_search"
-            android:drawablePadding="@dimen/spacing_small"
-            android:focusableInTouchMode="false"
-            android:hint="@string/search_hint"
-            android:onClick="@{() -> viewModel.onClickSearch()}"
-            android:paddingStart="@dimen/spacing_small"
-            android:textColorHint="@color/shade_ternary_color"
-            android:transitionName="search_box"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_explore" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_movies"
-            style="@style/CardCorners.Small"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="@dimen/spacing_medium"
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="@{() -> viewModel.onClickSearch()}"
+            android:layout_marginHorizontal="@dimen/spacing_medium"
             android:layout_marginTop="@dimen/spacing_medium"
-            android:layout_marginEnd="@dimen/spacing_medium"
-            android:backgroundTint="@color/card_background_color"
-            android:onClick="@{() -> viewModel.onClickMovies()}"
-            app:cardCornerRadius="@dimen/radius_small"
-            app:cardElevation="0dp"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@id/card_series"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/input_search">
+            android:focusableInTouchMode="false"
+            android:background="@drawable/edit_text_background"
+            android:gravity="center_vertical"
+            android:foreground="@drawable/edit_text_foreground"
+            android:transitionName="search_box">
 
-            <ImageView
-                android:id="@+id/icon_movie"
+            <EditText
+                style="@style/Regular.Medium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_background"
+                android:drawableStart="@drawable/ic_search"
+                android:drawableTint="@color/shade_ternary_color"
+                android:drawablePadding="@dimen/spacing_small"
+                android:hint="@string/search_hint"
+                android:layout_marginStart="@dimen/spacing_medium"
+                android:textColorHint="@color/shade_tertiary"
+                android:textAppearance="@style/Body_MD.Regular"
+                android:focusable="false"
+                android:cursorVisible="false"
+                android:longClickable="false"
+                android:inputType="none"
+                android:onClick="@{() -> viewModel.onClickSearch()}"
+                android:gravity="center_vertical" />
+
+            <ImageButton
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/spacing_medium"
-                android:src="@drawable/ic_movie" />
+                android:layout_marginStart="@dimen/spacing_too_small"
+                android:layout_marginVertical="@dimen/spacing_too_small"
+                android:padding="10dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_microphone"
+                app:tint="@color/shade_primary"
+                android:onClick="@{() -> viewModel.onClickSearch()}" />
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/text_movies_label"
-                style="@style/SemiBold.Medium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/spacing_large"
-                android:text="@string/movies_label"
-                android:textColor="@color/brand_color" />
-        </androidx.cardview.widget.CardView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintBaseline_toBottomOf="@id/media_type_tabs"
+            android:background="@color/stroke_primary"/>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_series"
-            style="@style/CardCorners.Small"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/spacing_medium"
-            android:backgroundTint="@color/card_background_color"
-            android:onClick="@{() -> viewModel.onClickTVShow()}"
-            app:cardCornerRadius="@dimen/radius_small"
-            app:cardElevation="0dp"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@id/card_actors"
-            app:layout_constraintStart_toEndOf="@id/card_movies"
-            app:layout_constraintTop_toBottomOf="@id/input_search">
 
-            <ImageView
-                android:id="@+id/icon_series"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/spacing_medium"
-                android:src="@drawable/ic_tv" />
-
-            <TextView
-                android:id="@+id/text_series_label"
-                style="@style/SemiBold.Medium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/spacing_large"
-                android:text="@string/tv_shows_label"
-                android:textColor="@color/brand_color" />
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_actors"
-            style="@style/CardCorners.Small"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="@dimen/spacing_medium"
-            android:layout_marginTop="@dimen/spacing_medium"
-            android:backgroundTint="@color/card_background_color"
-            android:onClick="@{() -> viewModel.onClickActors()}"
-            app:cardCornerRadius="@dimen/radius_small"
-            app:cardElevation="0dp"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="@id/input_search"
-            app:layout_constraintStart_toEndOf="@id/card_series"
-            app:layout_constraintTop_toBottomOf="@id/input_search">
-
-            <ImageView
-                android:id="@+id/icon_actors"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/spacing_medium"
-                android:src="@drawable/ic_actors" />
-
-            <TextView
-                android:id="@+id/text_actors_label"
-                style="@style/SemiBold.Medium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/spacing_large"
-                android:text="@string/actors_label"
-                android:textColor="@color/brand_color" />
-
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/text_trend_label"
-            style="@style/SemiBold.Medium"
-            android:layout_width="wrap_content"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/media_type_tabs"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_large"
-            android:text="@string/trending_today_label"
-            android:textColor="@color/shade_primary_color"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="@dimen/spacing_medium_small"
+            app:layout_constraintStart_toStartOf="@id/input_search"
+            app:layout_constraintEnd_toEndOf="@id/input_search"
+            app:layout_constraintTop_toBottomOf="@id/input_search"
+            android:layout_marginHorizontal="16dp"
+            app:tabIndicator="@drawable/tab_indicator"
+            app:tabIndicatorColor="@color/brand_primary"
+            app:tabIndicatorHeight="2dp"
+            app:tabTextAppearance="@style/Body_MD.Medium"
+            app:tabTextColor="@color/shade_tertiary"
+            app:tabRippleColor="@color/brand_tertiary"
+            app:tabSelectedTextColor="@color/brand_primary"
+            app:onTabListener="@{viewModel}"
+            app:tabMode="fixed">
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/movies"
+                />
 
-            app:doneLoading="@{viewModel.uiState.loading}"
-            app:errorNotEmpty="@{viewModel.uiState.error}"
-
-            app:layout_constraintStart_toStartOf="@id/card_movies"
-            app:layout_constraintTop_toBottomOf="@id/card_movies" />
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/series"
+                />
+        </com.google.android.material.tabs.TabLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_trend"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginHorizontal="@dimen/spacing_small"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:clipToPadding="false"
-            android:elevation="@dimen/spacing_too_small"
+        android:id="@+id/recycler_media"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/spacing_small"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingTop="60dp"
+        android:scrollbars="none"
+        app:doneLoading="@{viewModel.uiState.loading}"
+        app:errorNotEmpty="@{viewModel.uiState.error}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/media_type_tabs"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:listitem="@layout/item_explore"  />
 
-            app:doneLoading="@{viewModel.uiState.loading}"
-            app:errorNotEmpty="@{viewModel.uiState.error}"
-
-            app:items="@{viewModel.uiState.trendyMovie}"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_trend_label"
-            app:spanCount="2"
-            tools:listitem="@layout/item_trend" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/animation_loading"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            app:isVisible="@{viewModel.uiState.loading}"
+        <include
+            android:id="@+id/error"
+            layout="@layout/error2"
+            app:isError="@{!viewModel.uiState.error.empty}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/loading_animation" />
+            app:viewModel="@{viewModel}" />
 
+        <include
+            android:id="@+id/loading"
+            layout="@layout/loading2"
+            app:isLoading="@{viewModel.uiState.loading}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.motion.widget.MotionLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_genres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/spacing_medium_small"
+            android:paddingHorizontal="@dimen/spacing_medium"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/chip_item_explore_category"
+            app:items="@{viewModel.uiState.genres}"
+            app:resetScroll="@{false}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/media_type_tabs"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:background="@drawable/toggle_container_background"
+                android:padding="4dp">
+
+                <ImageButton
+                    android:id="@+id/view_grid_button"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginEnd="2dp"
+                    android:background="@drawable/explore_button_background"
+                    android:src="@drawable/ic_grid_selector"
+                    android:scaleType="centerInside"
+                    android:padding="12dp"
+                    app:isSelectedViewMode="@{viewModel.uiState.selectedViewMode == com.karrar.movieapp.ui.explore.exploreUIState.ExploreViewMode.GRID}"
+                    android:contentDescription="Grid View" />
+
+                <ImageButton
+                    android:id="@+id/view_list_button"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="2dp"
+                    android:background="@drawable/explore_button_background"
+                    android:src="@drawable/ic_list_selector"
+                    android:scaleType="centerInside"
+                    android:padding="12dp"
+                    app:isSelectedViewMode="@{viewModel.uiState.selectedViewMode == com.karrar.movieapp.ui.explore.exploreUIState.ExploreViewMode.LIST}"
+                    android:contentDescription="List View" />
+
+            </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

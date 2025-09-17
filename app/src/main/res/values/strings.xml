@@ -6,7 +6,7 @@
     <string name="latest">Latest</string>
     <string name="popular">Popular</string>
     <string name="tv_shows">TV Shows</string>
-    <string name="search_hint">Search for a movie, tv show, person…</string>
+    <string name="search_hint">Search…</string>
     <string name="movies_chip">Movies</string>
     <string name="tv_shows_chip">TV Shows</string>
     <string name="actors_label">Actors</string>
@@ -23,6 +23,7 @@
     <string name="birthday">Birthday</string>
     <string name="biography">Biography</string>
     <string name="movies">Movies</string>
+    <string name="series">Series</string>
     <string name="actors">Actors</string>
     <string name="oops">Oops!</string>
     <string name="description">There is no internet connection\nPlease check it out</string>
@@ -70,7 +71,7 @@
     <string name="rated_movies">My Ratings</string>
     <string name="sign_out">Sign Out</string>
     <string name="at">\@</string>
-    <string name="are_you_sure">Are you sure you want to logout?</string>
+    <string name="are_you_sure">Are You Sure?</string>
     <string name="you_re_about_to_sign_out_of_your_account">You’re about to sign out of your account.</string>
     <string name="cancel">Cancel</string>
     <string name="logout">Sign Out</string>
@@ -118,6 +119,16 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="take_to_website">You’ll be taken to the website to update your name, username, or profile picture.</string>
     <string name="go_to_website">Go to Website</string>
+    <string name="get_started">Get Started</string>
+    <string name="onboarding_title_1">Welcome to Your Movie Universe</string>
+    <string name="onboarding_desc_1">Discover, track, and rate your favorite movies &amp; series.</string>
+
+    <string name="onboarding_title_2">Track Everything</string>
+    <string name="onboarding_desc_2">Your Watchlist. Your Ratings. All in One Place.</string>
+
+    <string name="onboarding_title_3">Personalized Recommendations</string>
+    <string name="onboarding_desc_3">Answer fun questions to get handpicked recommendations.</string>
+
     <string name="collection_item">%1$s movies</string>
     <string name="start_collecting">Start Collecting</string>
     <string name="no_collection_content_text">Start building your personal library by saving movies or series you want to remember.</string>

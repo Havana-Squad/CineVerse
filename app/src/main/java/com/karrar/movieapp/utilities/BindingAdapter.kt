@@ -1,20 +1,28 @@
 package com.karrar.movieapp.utilities
 
+import android.content.Context
+import android.util.Log
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import androidx.annotation.DrawableRes
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.google.android.material.chip.ChipGroup
+import com.google.android.material.tabs.TabLayout
 import com.karrar.movieapp.R
 import com.karrar.movieapp.domain.enums.MediaType
+import com.karrar.movieapp.domain.models.Genre
 import com.karrar.movieapp.ui.base.BaseAdapter
 import com.karrar.movieapp.ui.category.uiState.ErrorUIState
 import com.karrar.movieapp.ui.category.uiState.GenreUIState
+import com.karrar.movieapp.ui.explore.ExploreInteractionListener
+import com.karrar.movieapp.ui.explore.exploreUIState.ExploreViewMode
 import com.karrar.movieapp.utilities.Constants.FIRST_CATEGORY_ID
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
@@ -135,10 +143,11 @@ fun <T> hideWhenSuccessSearch(view: View, text: String, error: List<T>?, loading
 
 // different
 
-@BindingAdapter(value = ["app:items"])
-fun <T> setRecyclerItems(view: RecyclerView, items: List<T>?) {
+@BindingAdapter(value = ["app:items", "app:resetScroll"], requireAll = false)
+fun <T> setRecyclerItems(view: RecyclerView, items: List<T>?, resetScroll: Boolean? = false) {
     (view.adapter as BaseAdapter<T>?)?.setItems(items ?: emptyList())
     view.scrollToPosition(0)
+    if (resetScroll == true) view.scrollToPosition(0)
 }
 
 
@@ -225,7 +234,8 @@ fun setDuration(view: TextView, hours: Int?, minutes: Int?) {
 
 @BindingAdapter("app:setGenres", "app:listener", "app:selectedChip")
 fun <T> setGenresChips(
-    view: ChipGroup, chipList: List<GenreUIState>?, listener: T,
+    view: ChipGroup, chipList: List<GenreUIState>?,
+    listener: T,
     selectedChip: Int?
 ) {
     chipList?.let {
@@ -233,6 +243,33 @@ fun <T> setGenresChips(
     }
     val index = chipList?.indexOf(chipList.find { it.genreID == selectedChip }) ?: FIRST_CATEGORY_ID
     view.getChildAt(index)?.id?.let { view.check(it) }
+}
+
+@BindingAdapter("app:setExploreGenres", "app:listener", "app:selectedChip")
+fun setExploreGenresChips(
+    view: ChipGroup,
+    chipList: List<com.karrar.movieapp.ui.explore.exploreUIState.GenreUIState>?,
+    listener: ExploreInteractionListener,
+    selectedChip: Int?
+) {
+    view.removeAllViews()
+    chipList?.let {
+        it.forEach { genre -> view.addView(view.createChip(genre, listener, selectedChip)) }
+    }
+}
+
+@BindingAdapter("app:onTabListener")
+fun setOnMediaTypeTabSelected(tabLayout: TabLayout, listener: ExploreInteractionListener?) {
+    listener?.let { safeListener ->
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                safeListener.onClickMediaType(tab.position+1)
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab) {}
+            override fun onTabReselected(tab: TabLayout.Tab) {}
+        })
+    }
 }
 
 @BindingAdapter("app:genre")
@@ -252,3 +289,12 @@ fun <T> showWhenTextNotEmpty(view: View,text:String){
     view.isVisible = text.isNotEmpty()
 }
 
+@BindingAdapter("isSelectedViewMode")
+fun isSelectedViewMode(button: ImageButton, isSelected: Boolean) {
+    button.isSelected = isSelected
+}
+
+@BindingAdapter("imageRes")
+fun ImageView.setImageRes(resId: Int?) {
+    resId?.let { setImageResource(it) }
+}

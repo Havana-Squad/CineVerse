@@ -3,6 +3,7 @@ package com.karrar.movieapp.ui.search
 import android.content.Context
 import android.os.Bundle
 import android.transition.ChangeTransform
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.viewModels

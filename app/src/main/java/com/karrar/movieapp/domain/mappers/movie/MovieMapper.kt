@@ -15,7 +15,7 @@ class MovieMapper @Inject constructor() : Mapper<MovieDto, Media> {
             BuildConfig.IMAGE_BASE_PATH + input.posterPath,
             MediaType.MOVIE.value,
             input.originalTitle ?: "",
-            input.releaseDate?.substringBefore('-') ?: "",
+            input.releaseDate ?: "",
             input.voteAverage?.toFloat() ?: 0f
         )
     }
