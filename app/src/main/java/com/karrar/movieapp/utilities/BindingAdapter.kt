@@ -293,3 +293,8 @@ fun <T> showWhenTextNotEmpty(view: View,text:String){
 fun isSelectedViewMode(button: ImageButton, isSelected: Boolean) {
     button.isSelected = isSelected
 }
+
+@BindingAdapter("imageRes")
+fun ImageView.setImageRes(resId: Int?) {
+    resId?.let { setImageResource(it) }
+}
