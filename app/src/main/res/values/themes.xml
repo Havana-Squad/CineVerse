@@ -112,7 +112,7 @@
     <style name="Theme.MovieApp.SplashScreen" parent="Theme.SplashScreen.IconBackground">
         <item name="postSplashScreenTheme">@style/Theme.MovieApp</item>
         <item name="windowSplashScreenBackground">@color/background_screen</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_cineverse_logo</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_foreground</item>
     </style>
 
     <style name="CircleImage">
