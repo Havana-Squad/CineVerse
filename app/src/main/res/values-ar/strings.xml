@@ -130,4 +130,17 @@
     <string name="onboarding_title_3">توصيات مخصصة</string>
     <string name="onboarding_desc_3">أجب عن أسئلة ممتعة لتحصل على توصيات مختارة خصيصًا لك.</string>
 
+    <string name="collection_item">%1$ افلام</string>
+    <string name="start_collecting">ابدأ الجمع</string>
+    <string name="no_collection_content_text">ابدأ ببناء مكتبتك الشخصية عن طريق حفظ الأفلام أو المسلسلات التي تريد تذكرها.</string>
+    <string name="no_collections_header">لا توجد مجموعات حتى الآن</string>
+    <string name="need_login_header">لقد اقتربت تقريبا!</string>
+    <string name="need_login_content">قم بتسجيل الدخول لحفظ الأفلام وإنشاء مجموعات والحصول على توصيات مخصصة.</string>
+    <string name="create_new_collection">إنشاء مجموعة جديدة</string>
+    <string name="collection_name">اسم المجموعة</string>
+    <string name="e_g_my_watchlist">مثال: قائمة مشاهدتي</string>
+    <string name="cancel_txt">إلغاء</string>
+    <string name="create_txt">إنشاء</string>
+    <string name="no_connection_header">اوبس! لا يوجد إنترنت</string>
+    <string name="no_connection_content">يبدو أنك غير متصل بالإنترنت. لنتواصل مجددًا حتى لا تفوتك الفرصة!</string>
 </resources>

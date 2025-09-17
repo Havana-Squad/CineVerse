@@ -6,7 +6,7 @@
     <string name="latest">Latest</string>
     <string name="popular">Popular</string>
     <string name="tv_shows">TV Shows</string>
-    <string name="search_hint">Search for a movie, tv show, person…</string>
+    <string name="search_hint">Search…</string>
     <string name="movies_chip">Movies</string>
     <string name="tv_shows_chip">TV Shows</string>
     <string name="actors_label">Actors</string>
@@ -23,6 +23,7 @@
     <string name="birthday">Birthday</string>
     <string name="biography">Biography</string>
     <string name="movies">Movies</string>
+    <string name="series">Series</string>
     <string name="actors">Actors</string>
     <string name="oops">Oops!</string>
     <string name="description">There is no internet connection\nPlease check it out</string>
@@ -128,4 +129,17 @@
     <string name="onboarding_title_3">Personalized Recommendations</string>
     <string name="onboarding_desc_3">Answer fun questions to get handpicked recommendations.</string>
 
+    <string name="collection_item">%1$s movies</string>
+    <string name="start_collecting">Start Collecting</string>
+    <string name="no_collection_content_text">Start building your personal library by saving movies or series you want to remember.</string>
+    <string name="no_collections_header">No Collections Yet</string>
+    <string name="need_login_header">You\'re Almost There!</string>
+    <string name="need_login_content">Log in to save movies, create collections, and get personalized recommendations.</string>
+    <string name="create_new_collection">Create New Collection</string>
+    <string name="collection_name">Collection Name</string>
+    <string name="e_g_my_watchlist">e.g. My Watchlist</string>
+    <string name="cancel_txt">Cancel</string>
+    <string name="create_txt">Create</string>
+    <string name="no_connection_header">Oops! No Internet</string>
+    <string name="no_connection_content">Looks like you\'re offline. Let\'s reconnect so you don\'t miss out!</string>
 </resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="com.karrar.movieapp.ui.explore.ExploreInteractionListener" />
+
+        <variable
+            name="item"
+            type="com.karrar.movieapp.ui.explore.exploreUIState.GenreUIState" />
+    </data>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/explore_chip"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/plus_jakarta_sans_regular"
+        android:onClick="@{() -> listener.onClickCategory(item.genreID)}"
+        android:text="@{item.genreName}"
+        android:textColor="@color/chip_text"
+        android:textAppearance="@style/Label_MD.Medium"
+        app:chipBackgroundColor="@color/chip_background"
+        app:chipStrokeColor="@color/chip_stroke"
+        app:chipCornerRadius="@dimen/radius_full"
+        app:chipMinHeight="@dimen/chip_height"
+        app:chipStartPadding="@dimen/spacing_medium_small"
+        app:chipEndPadding="@dimen/spacing_medium_small"
+        android:foreground="@drawable/chip_foreground"
+        app:ensureMinTouchTargetSize="false"
+        tools:text="All"/>
+
+</layout>
