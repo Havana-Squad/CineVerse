@@ -120,6 +120,15 @@
     <string name="edit_profile">تعديل الملف الشخصي</string>
     <string name="take_to_website">سيتم نقلك إلى الموقع لتحديث اسمك أو اسم المستخدم أو صورة الملف الشخصي.</string>
     <string name="go_to_website">الانتقال إلى الموقع</string>
+    <string name="get_started">ابدأ الآن</string>
+    <string name="onboarding_title_1">مرحبًا بك في عالم أفلامك</string>
+    <string name="onboarding_desc_1">اكتشف، وتابع، وقم بتقييم أفلامك ومسلسلاتك المفضلة.</string>
+
+    <string name="onboarding_title_2">تابع كل شيء</string>
+    <string name="onboarding_desc_2">قائمة المشاهدة. تقييماتك. كل شيء في مكان واحد.</string>
+
+    <string name="onboarding_title_3">توصيات مخصصة</string>
+    <string name="onboarding_desc_3">أجب عن أسئلة ممتعة لتحصل على توصيات مختارة خصيصًا لك.</string>
 
     <string name="collection_item">%1$ افلام</string>
     <string name="start_collecting">ابدأ الجمع</string>

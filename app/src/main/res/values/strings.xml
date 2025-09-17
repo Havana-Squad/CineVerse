@@ -71,7 +71,7 @@
     <string name="rated_movies">My Ratings</string>
     <string name="sign_out">Sign Out</string>
     <string name="at">\@</string>
-    <string name="are_you_sure">Are you sure you want to logout?</string>
+    <string name="are_you_sure">Are You Sure?</string>
     <string name="you_re_about_to_sign_out_of_your_account">You’re about to sign out of your account.</string>
     <string name="cancel">Cancel</string>
     <string name="logout">Sign Out</string>
@@ -120,6 +120,17 @@
     <string name="e_g_my_watchlist">e.g. My Watchlist</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="go_to_website">Go to Website</string>
+    <string name="get_started">Get Started</string>
+    <string name="onboarding_title_1">Welcome to Your Movie Universe</string>
+    <string name="onboarding_desc_1">Discover, track, and rate your favorite movies &amp; series.</string>
+
+    <string name="onboarding_title_2">Track Everything</string>
+    <string name="onboarding_desc_2">Your Watchlist. Your Ratings. All in One Place.</string>
+
+    <string name="onboarding_title_3">Personalized Recommendations</string>
+    <string name="onboarding_desc_3">Answer fun questions to get handpicked recommendations.</string>
+
+    <string name="collection_item">%1$s movies</string>
     <string name="history">History</string>
     <string name="language">Language</string>
     <string name="login_or_signup">Login or Signup</string>
