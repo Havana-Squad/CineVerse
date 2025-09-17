@@ -10,8 +10,4 @@ class OnboardingImageAdapter(
 ) : BaseAdapter<Int>(items, listener) {
 
     override val layoutID: Int = R.layout.item_onboarding_image
-
-    override fun areItemsSame(oldItem: Int, newItem: Int): Boolean = oldItem == newItem
-
-    override fun areContentSame(oldPosition: Int, newPosition: Int): Boolean = oldPosition == newPosition
 }

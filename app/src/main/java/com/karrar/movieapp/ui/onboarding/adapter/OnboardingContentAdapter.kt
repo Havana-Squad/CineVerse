@@ -11,12 +11,4 @@ class OnboardingContentAdapter(
 ) : BaseAdapter<OnboardingText>(items, listener) {
 
     override val layoutID: Int = R.layout.item_onboarding_content
-
-    override fun areItemsSame(oldItem: OnboardingText, newItem: OnboardingText): Boolean {
-        return oldItem.title == newItem.title
-    }
-
-    override fun areContentSame(oldPosition: OnboardingText, newPosition: OnboardingText): Boolean {
-        return oldPosition == newPosition
-    }
 }
