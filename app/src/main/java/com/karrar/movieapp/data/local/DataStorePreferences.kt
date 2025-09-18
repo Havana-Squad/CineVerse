@@ -39,6 +39,25 @@ class DataStorePreferences(context: Context) {
         return runBlocking { prefDataStore.data.map { it[stringPreferencesKey(key)] }.first() }
     }
 
+    fun readStringFlow(key: String, defaultValue: String = ""): Flow<String> {
+        return prefDataStore.data.map { preferences ->
+            preferences[stringPreferencesKey(key)] ?: defaultValue
+        }
+    }
+
+    suspend fun writeBoolean(key: String, value: Boolean) {
+        prefDataStore.edit { preferences ->
+            preferences[booleanPreferencesKey(key)] = value
+        }
+    }
+
+
+    fun readBooleanFlow(key: String, defaultValue: Boolean = false): Flow<Boolean> {
+        return prefDataStore.data.map { preferences ->
+            preferences[booleanPreferencesKey(key)] ?: defaultValue
+        }
+    }
+
     companion object {
         private const val PREFERENCES_FILE_NAME = "movie"
     }
