@@ -29,9 +29,13 @@ class ListDetailsFragment : BaseFragment<FragmentListDetailsBinding>() {
         if (event is ListDetailsUIEvent.OnItemSelected) {
             if (event.savedMediaUIState.mediaType == Constants.MOVIE) {
                 navigateToMovieDetails(event.savedMediaUIState.mediaID)
-            } else {
+            }
+            else {
                 navigateToTvShowDetails(event.savedMediaUIState.mediaID)
             }
+        }
+        else if (event is ListDetailsUIEvent.OnBackBtnClicked){
+            navigateBack()
         }
     }
 
@@ -45,6 +49,10 @@ class ListDetailsFragment : BaseFragment<FragmentListDetailsBinding>() {
         findNavController().navigate(
             ListDetailsFragmentDirections.actionListDetailsFragmentToTvShowDetailsFragment(id)
         )
+    }
+
+    private fun navigateBack(){
+        findNavController().popBackStack()
     }
 
 }

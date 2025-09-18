@@ -1,8 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.MovieApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <item name="colorPrimary">@color/brand_color</item>
-        <item name="colorPrimaryVariant">@color/background_color</item>
+        <item name="colorPrimary">@color/brand_primary</item>
+        <item name="colorPrimaryVariant">@color/background_screen</item>
 
         <item name="android:statusBarColor">@color/background_screen</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
@@ -311,6 +311,16 @@
 
     <style name="CorneredImage">
         <item name="cornerSize">@dimen/radius_xl</item>
+    </style>
+
+    <style name="CardCorner">
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="CardCorners.Image">
+        <item name="cornerSizeTopRight">@dimen/radius_lg</item>
+        <item name="cornerSizeTopLeft">@dimen/radius_lg</item>
+        <item name="cornerSizeBottomLeft">@dimen/radius_lg</item>
     </style>
 
     <style name="Round20">

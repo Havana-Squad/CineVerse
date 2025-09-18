@@ -2,9 +2,9 @@ package com.karrar.movieapp.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.karrar.movieapp.domain.usecases.appConfigutations.GetAppLanguageUseCase
-import com.karrar.movieapp.domain.usecases.appConfigutations.GetAppThemeUseCase
-import com.karrar.movieapp.domain.usecases.appConfigutations.GetFirstLaunchUseCase
+import com.karrar.movieapp.domain.usecases.appPreferences.GetAppLanguageUseCase
+import com.karrar.movieapp.domain.usecases.appPreferences.GetAppThemeUseCase
+import com.karrar.movieapp.domain.usecases.appPreferences.GetFirstLaunchUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

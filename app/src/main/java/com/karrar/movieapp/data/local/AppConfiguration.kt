@@ -34,8 +34,6 @@ class AppConfigurator @Inject constructor(private val dataStorePreferences: Data
         return dataStorePreferences.readLong(key)
     }
 
-
-
     companion object DataStorePreferencesKeys {
         const val SESSION_ID_KEY = "session_id"
     }
