@@ -1,16 +1,16 @@
 package com.karrar.movieapp.data.repository
 
-import com.karrar.movieapp.data.local.AppConfiguration
+import com.karrar.movieapp.data.local.TipConfiguration
 import javax.inject.Inject
 
 class TipRepositoryImp @Inject constructor(
-    private val appConfiguration: AppConfiguration,
+    private val tipConfiguration: TipConfiguration,
 ) : TipRepository, BaseRepository()  {
     override suspend fun getCategoryTipStatus(): Boolean {
-        return appConfiguration.getCategoryTipStatus()
+        return tipConfiguration.getCategoryTipStatus()
     }
 
     override suspend fun closeCategoryTip() {
-        appConfiguration.closeCategoryTip()
+        tipConfiguration.closeCategoryTip()
     }
 }
