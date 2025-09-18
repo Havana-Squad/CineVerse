@@ -4,10 +4,10 @@ import androidx.lifecycle.viewModelScope
 import com.karrar.movieapp.domain.usecases.CheckIfLoggedInUseCase
 import com.karrar.movieapp.domain.usecases.GetAccountDetailsUseCase
 import com.karrar.movieapp.domain.usecases.LogoutUseCase
-import com.karrar.movieapp.domain.usecases.appConfigutations.GetAppLanguageUseCase
-import com.karrar.movieapp.domain.usecases.appConfigutations.GetAppThemeUseCase
-import com.karrar.movieapp.domain.usecases.appConfigutations.SetAppLanguageUseCase
-import com.karrar.movieapp.domain.usecases.appConfigutations.SetAppThemeUseCase
+import com.karrar.movieapp.domain.usecases.appPreferences.GetAppLanguageUseCase
+import com.karrar.movieapp.domain.usecases.appPreferences.GetAppThemeUseCase
+import com.karrar.movieapp.domain.usecases.appPreferences.SetAppLanguageUseCase
+import com.karrar.movieapp.domain.usecases.appPreferences.SetAppThemeUseCase
 import com.karrar.movieapp.ui.base.BaseViewModel
 import com.karrar.movieapp.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel

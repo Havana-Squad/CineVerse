@@ -32,8 +32,8 @@ abstract class RepositoryModule {
     @ViewModelScoped
     @Binds
     abstract fun bindAppConfigurationsRepository(
-        appConfigurationsRepositoryImp: AppConfigurationsRepositoryImpl
-    ): AppConfigurationsRepository
+        appPreferencesRepositoryImp: AppPreferencesRepositoryImpl
+    ): AppPreferencesRepository
 
     @ViewModelScoped
     @Binds

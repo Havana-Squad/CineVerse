@@ -3,7 +3,7 @@ package com.karrar.movieapp.ui.onboarding
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.karrar.movieapp.R
-import com.karrar.movieapp.domain.usecases.appConfigutations.SetFirstLaunchUseCase
+import com.karrar.movieapp.domain.usecases.appPreferences.SetFirstLaunchUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.launch
