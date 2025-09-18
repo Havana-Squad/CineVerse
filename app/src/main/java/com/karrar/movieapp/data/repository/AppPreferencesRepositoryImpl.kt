@@ -1,15 +1,15 @@
 package com.karrar.movieapp.data.repository
 
-import com.karrar.movieapp.data.repository.appConfiguration.AppConfigurationsDataSource
+import com.karrar.movieapp.data.local.AppPreferences
 import jakarta.inject.Inject
 import kotlinx.coroutines.flow.Flow
 
-class AppConfigurationsRepositoryImpl @Inject constructor(
-    private val dataSource: AppConfigurationsDataSource
-): AppConfigurationsRepository {
+class AppPreferencesRepositoryImpl @Inject constructor(
+    private val dataSource: AppPreferences
+): BaseRepository() ,AppPreferencesRepository {
 
     override fun isAppInDarkTheme(): Flow<Boolean> {
-        return dataSource.isDarkTheme
+        return dataSource.isDarkTheme()
     }
 
     override suspend fun setDarkTheme(enabled: Boolean) {
@@ -17,7 +17,7 @@ class AppConfigurationsRepositoryImpl @Inject constructor(
     }
 
     override fun getAppLanguage(): Flow<String> {
-        return dataSource.appLanguage
+        return dataSource.getAppLanguage()
     }
 
     override suspend fun setAppLanguage(language: String) {
@@ -25,7 +25,7 @@ class AppConfigurationsRepositoryImpl @Inject constructor(
     }
 
     override fun isFirstLaunch(): Flow<Boolean> {
-        return dataSource.isFirstLaunch
+        return dataSource.isFirstLaunch()
     }
 
     override suspend fun setFirstLaunchDone() {
