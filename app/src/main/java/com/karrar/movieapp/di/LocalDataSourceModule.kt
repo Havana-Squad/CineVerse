@@ -21,5 +21,4 @@ abstract class LocalDataSourceModule {
     @Singleton
     @Binds
     abstract fun bindAppPreference(appPreferencesImpl: AppPreferencesImpl): AppPreferences
-
 }

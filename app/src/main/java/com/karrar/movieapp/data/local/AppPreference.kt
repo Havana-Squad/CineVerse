@@ -10,6 +10,10 @@ interface AppPreferences{
     suspend fun setDarkTheme(enabled: Boolean)
     fun getAppLanguage(): Flow<String>
     suspend fun setAppLanguage(languageCode: String)
+
+    suspend fun getCategoryTipStatus(): Boolean
+
+    suspend fun closeCategoryTip()
 }
 
 
@@ -40,9 +44,19 @@ class AppPreferencesImpl @Inject constructor(
         dataStorePreferences.writeString(APP_LANGUAGE_KEY, languageCode)
     }
 
+    override suspend fun getCategoryTipStatus(): Boolean {
+        return dataStorePreferences.readBoolean(IS_CATEGORY_TIP_SHOWN) ?: true
+    }
+
+    override suspend fun closeCategoryTip() {
+        dataStorePreferences.writeBoolean(IS_CATEGORY_TIP_SHOWN, false)
+    }
+
     companion object DataStorePreferencesKeys {
         const val DARK_MODE_KEY = "dark_mode_enabled"
         const val APP_LANGUAGE_KEY = "app_language"
         const val KEY_FIRST_LAUNCH = "first_launch"
+        const val IS_CATEGORY_TIP_SHOWN = "category_details_tip"
+
     }
 }

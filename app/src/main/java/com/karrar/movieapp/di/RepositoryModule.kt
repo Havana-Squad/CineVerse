@@ -35,4 +35,10 @@ abstract class RepositoryModule {
         appPreferencesRepositoryImp: AppPreferencesRepositoryImpl
     ): AppPreferencesRepository
 
+    @ViewModelScoped
+    @Binds
+    abstract fun bindTipRepository(
+        tipRepositoryImp: TipRepositoryImp
+    ): TipRepository
+
 }

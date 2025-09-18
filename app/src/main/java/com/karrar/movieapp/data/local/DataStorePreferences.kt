@@ -58,6 +58,10 @@ class DataStorePreferences(context: Context) {
         }
     }
 
+    suspend fun readBoolean(key: String): Boolean? {
+        return prefDataStore.data.firstOrNull()?.get(booleanPreferencesKey(key))
+    }
+
     companion object {
         private const val PREFERENCES_FILE_NAME = "movie"
     }

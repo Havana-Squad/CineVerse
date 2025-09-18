@@ -11,7 +11,7 @@ data class SavedListDto(
     @SerializedName("first_air_date")
     val firstAirDate: String?,
     @SerializedName("genre_ids")
-    val genreIds: List<Int?>?,
+    val genreIds: List<Int>?,
     @SerializedName("id")
     val id: Int?,
     @SerializedName("media_type")
