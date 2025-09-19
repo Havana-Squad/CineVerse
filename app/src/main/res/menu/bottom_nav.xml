@@ -3,25 +3,25 @@
     <item
         android:id="@+id/homeFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/home_icon"
         android:title="@string/home" />
 
     <item
         android:id="@+id/exploringFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_search"
+        android:icon="@drawable/explore_icon"
         android:title="@string/explore" />
 
     <item
         android:id="@+id/myListFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_book_mark"
+        android:icon="@drawable/match_icon"
         android:title="@string/myList" />
 
     <item
         android:id="@+id/profileFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_profile"
+        android:icon="@drawable/profile_icon"
         android:title="@string/profile" />
 
 </menu>
