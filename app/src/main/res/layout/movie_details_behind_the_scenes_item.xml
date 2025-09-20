@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.karrar.movieapp.ui.models.CrewUIState" />
+
+        <variable
+            name="isLast"
+            type="Boolean" />
+    </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -14,7 +26,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Characters"
+        android:text="@{item.job}"
         android:textColor="@color/shade_secondary"
         android:textSize="14sp" />
 
@@ -22,8 +34,9 @@
         android:id="@+id/tv_person_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bob Kane"
+        android:text="@{item.name}"
         android:textColor="@color/shade_primary"
         android:textSize="14sp" />
 
 </LinearLayout>
+</layout>
