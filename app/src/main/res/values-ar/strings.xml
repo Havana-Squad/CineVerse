@@ -144,4 +144,8 @@
     <string name="no_connection_header">اوبس! لا يوجد إنترنت</string>
     <string name="no_connection_content">يبدو أنك غير متصل بالإنترنت. لنتواصل مجددًا حتى لا تفوتك الفرصة!</string>
     <string name="match">تلائم</string>
+    <string name="series">مسلسلات</string>
+    <string name="try_again">حاول مرة اخرى</string>
+    <string name="category_tip_txt">نصيحة: مرر إلى اليسار لإزالة الأفلام من مجموعتك.</string>
+
 </resources>
