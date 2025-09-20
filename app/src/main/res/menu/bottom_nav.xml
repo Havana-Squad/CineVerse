@@ -4,24 +4,27 @@
         android:id="@+id/homeFragment"
         android:enabled="true"
         android:icon="@drawable/home_icon"
-        android:title="@string/home" />
+        android:title="@string/home"
+        android:actionLayout="@layout/bottom_nav_item" />
 
     <item
         android:id="@+id/exploringFragment"
         android:enabled="true"
         android:icon="@drawable/explore_icon"
-        android:title="@string/explore" />
+        android:title="@string/explore"
+        android:actionLayout="@layout/bottom_nav_item" />
 
     <item
         android:id="@+id/myListFragment"
         android:enabled="true"
         android:icon="@drawable/match_icon"
-        android:title="@string/myList" />
+        android:title="@string/match"
+        android:actionLayout="@layout/bottom_nav_item" />
 
     <item
         android:id="@+id/profileFragment"
         android:enabled="true"
         android:icon="@drawable/profile_icon"
-        android:title="@string/profile" />
-
+        android:title="@string/profile"
+        android:actionLayout="@layout/bottom_nav_item" />
 </menu>
