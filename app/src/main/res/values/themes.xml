@@ -312,4 +312,9 @@
         <item name="shapeAppearanceOverlay">@style/Round20</item>
     </style>
 
+    <style name="BottomNavigationText">
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
 </resources>
