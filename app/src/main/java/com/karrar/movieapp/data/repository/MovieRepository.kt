@@ -41,7 +41,7 @@ interface MovieRepository {
 
     suspend fun insertSearchItem(item: SearchHistoryEntity)
 
-    suspend fun deleteSearchItem(item: SearchHistoryEntity)
+    suspend fun deleteSearchItem(id: Long)
 
     suspend fun insertMovie(movie: WatchHistoryEntity)
 
@@ -76,12 +76,14 @@ interface MovieRepository {
     suspend fun getAdventureMoviesPager(): Pager<Int, MovieDto>
 
     suspend fun getMysteryMoviesPager(): Pager<Int, MovieDto>
+    suspend fun getSearchSuggestions(query: String): List<MovieDto>
 
     suspend fun searchForMoviePager(query: String): Pager<Int, MovieDto>
 
     suspend fun searchForActorPager(query: String): Pager<Int, ActorDto>
 
     suspend fun getAllSearchHistory(): Flow<List<SearchHistoryEntity>>
+    suspend fun deleteAllSearchHistory()
 
     suspend fun getActorData(): Pager<Int, ActorDto>
 

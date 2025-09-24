@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Movie App</string>
+    <string name="app_name">Cineverse</string>
 
     <string name="see_all">See all</string>
     <string name="top_rated">Top Rated</string>
@@ -153,4 +153,8 @@
     <string name="version_1_0_1">Version 1.0.1</string>
     <string name="you_can_always_sign_back">You can always sign back</string>
 
+    <string name="speak_now">Speak now</string>
+    <string name="speech_recognition_failed">Speech recognition failed</string>
+    <string name="clear_all">Clear All</string>
+    <string name="search_suggestions">Search Suggestions</string>
 </resources>

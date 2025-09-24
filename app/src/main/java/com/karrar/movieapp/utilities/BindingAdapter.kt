@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -23,10 +24,13 @@ import com.karrar.movieapp.ui.category.uiState.ErrorUIState
 import com.karrar.movieapp.ui.category.uiState.GenreUIState
 import com.karrar.movieapp.ui.explore.ExploreInteractionListener
 import com.karrar.movieapp.ui.explore.exploreUIState.ExploreViewMode
+import com.karrar.movieapp.ui.search.SearchViewModel
 import com.karrar.movieapp.utilities.Constants.FIRST_CATEGORY_ID
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.emptyFlow
 
 
 @BindingAdapter("app:showWhenListNotEmpty")
@@ -272,6 +276,20 @@ fun setOnMediaTypeTabSelected(tabLayout: TabLayout, listener: ExploreInteraction
     }
 }
 
+@BindingAdapter("app:onTabListener")
+fun setOnMediaTypeTabSelected(tabLayout: TabLayout, listener: SearchViewModel?) {
+    listener?.let { safeListener ->
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                safeListener.onClickMediaType(tab.position+1)
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab) {}
+            override fun onTabReselected(tab: TabLayout.Tab) {}
+        })
+    }
+}
+
 @BindingAdapter("app:genre")
 fun setAllGenre(textView: TextView, genreList: List<String>?) {
     genreList?.let {
@@ -301,4 +319,10 @@ fun isSelectedViewMode(button: ImageButton, isSelected: Boolean) {
 @BindingAdapter("imageRes")
 fun ImageView.setImageRes(resId: Int?) {
     resId?.let { setImageResource(it) }
+}
+
+
+@BindingAdapter("searchInput", "searchResultVisible")
+fun showSearchSuggestions(view: View, searchInput: String, isSearchResultVisible: Boolean) {
+    view.isVisible = searchInput.isNotBlank() && isSearchResultVisible.not()
 }

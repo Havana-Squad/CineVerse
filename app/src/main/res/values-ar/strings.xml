@@ -156,4 +156,8 @@
     <string name="try_again">حاول مرة اخرى</string>
     <string name="category_tip_txt">نصيحة: مرر إلى اليسار لإزالة الأفلام من مجموعتك.</string>
 
+    <string name="speak_now">تحدث الآن</string>
+    <string name="speech_recognition_failed">فشل التعرف على الكلام</string>
+    <string name="clear_all">مسح الكل</string>
+    <string name="search_suggestions">اقتراحات البحث</string>
 </resources>
