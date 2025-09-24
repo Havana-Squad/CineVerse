@@ -4,6 +4,7 @@ import com.karrar.movieapp.domain.mappers.Mapper
 import com.karrar.movieapp.domain.models.SaveListDetails
 import com.karrar.movieapp.ui.myList.listDetails.listDetailsUIState.SavedMediaUIState
 import javax.inject.Inject
+import kotlin.collections.joinToString
 
 class MediaUIStateMapper @Inject constructor() : Mapper<SaveListDetails, SavedMediaUIState> {
 
@@ -14,7 +15,8 @@ class MediaUIStateMapper @Inject constructor() : Mapper<SaveListDetails, SavedMe
             title = input.title,
             voteAverage = input.voteAverage,
             releaseDate = input.releaseDate,
-            mediaType = input.mediaType
+            mediaType = input.mediaType,
+            genres = input.genres.joinToString(", ")
         )
     }
 }

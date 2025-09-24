@@ -19,6 +19,12 @@ interface MovieDao {
     @Query("SELECT * FROM WATCH_LIST_TABLE")
     fun getAllSavedMovies(): Flow<List<WatchList>>
 
+    @Delete
+    suspend fun deleteWatchHistory(item: WatchHistoryEntity)
+
+    @Query("DELETE FROM SEARCH_HISTORY_TABLE")
+    suspend fun deleteAllSearchHistory()
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(search: SearchHistoryEntity)
 
@@ -39,7 +45,6 @@ interface MovieDao {
 
     @Query("DELETE FROM WATCH_HISTORY_TABLE")
     suspend fun deleteAllWatchedMovies()
-
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPopularMovies(items: List<PopularMovieEntity>)
@@ -68,7 +73,6 @@ interface MovieDao {
     @Query("SELECT * FROM NOW_STREAMING_MOVIE_TABLE")
     fun getNowStreamingMovies(): Flow<List<NowStreamingMovieEntity>>
 
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUpcomingMovie(items: List<UpcomingMovieEntity>)
 
@@ -78,7 +82,6 @@ interface MovieDao {
     @Query("SELECT * FROM UPCOMING_MOVIE_TABLE")
     fun getUpcomingMovies(): Flow<List<UpcomingMovieEntity>>
 
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMysteryMovie(items: List<MysteryMovieEntity>)
 
@@ -87,7 +90,6 @@ interface MovieDao {
 
     @Query("SELECT * FROM MYSTERY_MOVIE_TABLE")
     fun getMysteryMovies(): Flow<List<MysteryMovieEntity>>
-
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAdventureMovie(items: List<AdventureMovieEntity>)

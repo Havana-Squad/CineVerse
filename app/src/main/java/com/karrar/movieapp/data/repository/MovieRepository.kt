@@ -13,7 +13,6 @@ import com.karrar.movieapp.data.remote.response.movie.MovieDetailsDto
 import com.karrar.movieapp.data.remote.response.movie.RatingDto
 import com.karrar.movieapp.data.remote.response.review.ReviewsDto
 import com.karrar.movieapp.data.remote.response.trailerVideosDto.TrailerDto
-import com.karrar.movieapp.domain.models.*
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
@@ -101,5 +100,9 @@ interface MovieRepository {
     suspend fun deleteRating(movieId: Int): RatingDto?
 
     suspend fun getRatedMovie(): List<RatedMoviesDto>?
+
+    suspend fun deleteMovieFromCollection(sessionId: String, listId: Int, movieId: Int) : AddMovieDto?
+
+    suspend fun deleteWatchHistory(item: WatchHistoryEntity)
 
 }

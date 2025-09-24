@@ -1,8 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.MovieApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <item name="colorPrimary">@color/brand_color</item>
-        <item name="colorPrimaryVariant">@color/background_color</item>
+        <item name="colorPrimary">@color/brand_primary</item>
+        <item name="colorPrimaryVariant">@color/background_screen</item>
 
         <item name="android:statusBarColor">@color/background_screen</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
@@ -24,8 +24,8 @@
 
 
     <style name="MyTheme" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">
-        <item name="android:background">@color/background_color</item>
-        <item name="android:textColorPrimary">@color/shade_primary_color</item>
+        <item name="android:background">@color/background_screen</item>
+        <item name="android:textColorPrimary">@color/shade_primary</item>
         <item name="contentInsetStartWithNavigation">0dp</item>
         <item name="contentInsetStart">0dp</item>
     </style>
@@ -117,8 +117,8 @@
 
     <style name="Theme.MovieApp.SplashScreen" parent="Theme.SplashScreen.IconBackground">
         <item name="postSplashScreenTheme">@style/Theme.MovieApp</item>
-        <item name="windowSplashScreenBackground">@color/background_color</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="windowSplashScreenBackground">@color/background_screen</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_foreground</item>
     </style>
 
     <style name="CircleImage">
@@ -203,6 +203,20 @@
         <item name="android:textSize">@dimen/text_display_xl</item>
     </style>
 
+    <style name="Body_Display_SM">
+        <item name="android:textSize">@dimen/text_body_sm</item>
+        <item name="fontFamily">@font/manrope_medium</item>
+    </style>
+
+    <style name="Body_SM_Display_Medium" >
+        <item name="android:fontFamily">@font/manrope_medium</item>
+        <item name="android:textSize">@dimen/text_body_sm</item>
+    </style>
+
+    <style name="Title_dis" >
+        <item name="android:textSize">@dimen/text_title_sm</item>
+        <item name="android:fontFamily">@font/manrope_medium</item>
+    </style>
     <!-- ========= Titles ========= -->
     <style name="Title">
         <item name="android:fontFamily">@font/manrope_medium</item>
@@ -260,6 +274,11 @@
         <item name="android:fontFamily">@font/manrope_medium</item>
     </style>
 
+    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:fontFamily">@font/manrope_medium</item>
+    </style>
+
     <style name="Body_MD.SemiBold">
         <item name="android:fontFamily">@font/manrope_semibold</item>
     </style>
@@ -299,12 +318,34 @@
         <item name="cornerSize">@dimen/radius_xl</item>
     </style>
 
+    <style name="CardCorner">
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="CardCorners.Image">
+        <item name="cornerSizeTopRight">@dimen/radius_lg</item>
+        <item name="cornerSizeTopLeft">@dimen/radius_lg</item>
+        <item name="cornerSizeBottomLeft">@dimen/radius_lg</item>
+    </style>
+
     <style name="Round20">
         <item name="cornerSize">20%</item>
     </style>
 
     <style name="RoundFAB" parent="Widget.Design.FloatingActionButton">
         <item name="shapeAppearanceOverlay">@style/Round20</item>
+    </style>
+    <style name="CardCorners.Small_img">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/radius_lg</item>
+        <item name="cornerSizeTopRight">@dimen/radius_lg</item>
+        <item name="cornerSizeBottomLeft">@dimen/radius_lg</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <style name="BottomNavigationText">
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
 </resources>

@@ -6,6 +6,17 @@
     app:startDestination="@id/homeFragment">
 
     <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.karrar.movieapp.ui.onboarding.OnboardingFragment"
+        android:label="OnboardingFragment" >
+        <action
+            android:id="@+id/action_onboardingFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:launchSingleTop="true"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
         android:id="@+id/homeFragment"
         android:name="com.karrar.movieapp.ui.home.HomeFragment"
         tools:layout="@layout/fragment_home">
@@ -247,6 +258,9 @@
         android:name="com.karrar.movieapp.ui.profile.myratings.MyRatingsFragment"
         tools:layout="@layout/fragment_my_ratings">
         <action
+            android:id="@+id/action_ratedMoviesFragment_to_exploringFragment"
+            app:destination="@id/exploringFragment" />
+        <action
             android:id="@+id/action_ratedMoviesFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
         <action
@@ -258,6 +272,9 @@
         android:id="@+id/watchHistoryFragment"
         android:name="com.karrar.movieapp.ui.profile.watchhistory.WatchHistoryFragment"
         tools:layout="@layout/fragment_watch_history">
+        <action
+            android:id="@+id/action_watchHistoryFragment_to_exploringFragment"
+            app:destination="@id/exploringFragment" />
         <action
             android:id="@+id/action_watchHistoryFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />

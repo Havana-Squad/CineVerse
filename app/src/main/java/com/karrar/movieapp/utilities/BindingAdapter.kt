@@ -306,11 +306,21 @@ fun hideIfNotTypeOfMovie(view: View, mediaType: MediaType?) {
 fun <T> showWhenTextNotEmpty(view: View,text:String){
     view.isVisible = text.isNotEmpty()
 }
+@BindingAdapter("genresText")
+fun TextView.setGenres(genres: List<String>?) {
+    text = genres?.joinToString(", ") ?: ""
+}
 
 @BindingAdapter("isSelectedViewMode")
 fun isSelectedViewMode(button: ImageButton, isSelected: Boolean) {
     button.isSelected = isSelected
 }
+
+@BindingAdapter("imageRes")
+fun ImageView.setImageRes(resId: Int?) {
+    resId?.let { setImageResource(it) }
+}
+
 
 @BindingAdapter("searchInput", "searchResultVisible")
 fun showSearchSuggestions(view: View, searchInput: String, isSearchResultVisible: Boolean) {

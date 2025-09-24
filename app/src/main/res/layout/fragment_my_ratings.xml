@@ -13,12 +13,48 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_color">
+        android:background="@color/background_screen">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            app:titleTextAppearance="@style/Title_dis"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/arrow_left_back_icon"
+            app:title="@string/my_ratings"
+            app:titleTextColor="@color/shade_primary" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:tabBackground="@color/background_screen"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/brand_primary"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/brand_primary"
+            app:tabTextAppearance="@style/TabTextAppearance"
+            app:tabTextColor="@color/shade_tertiary" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:translationY="-1dp"
+            android:background="@color/stroke_primary"
+            app:layout_constraintTop_toBottomOf="@id/tab_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_rated_movies"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:clipToPadding="false"
             android:overScrollMode="never"
             android:paddingVertical="@dimen/spacing_small"
@@ -29,23 +65,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tab_layout"
             app:showWhenListNotEmpty="@{viewModel.ratedUiState.ratedList}"
             tools:listitem="@layout/item_rated_movie" />
 
-        <TextView
-            style="@style/SemiBold.Medium"
+        <include
+            layout="@layout/empty_rating_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/this_list_has_no_movies"
             android:visibility="gone"
-            app:doneLoad="@{viewModel.ratedUiState.loading}"
-            app:emptyData="@{viewModel.ratedUiState.ratedList}"
+            app:isVisible="@{!viewModel.ratedUiState.loading &amp;&amp; viewModel.ratedUiState.ratedList.empty &amp;&amp; viewModel.ratedUiState.error.empty}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:noError="@{viewModel.ratedUiState.error}" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
