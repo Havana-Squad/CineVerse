@@ -132,4 +132,8 @@
     <string name="create_txt">Create</string>
     <string name="no_connection_header">Oops! No Internet</string>
     <string name="no_connection_content">Looks like you\'re offline. Let\'s reconnect so you don\'t miss out!</string>
+    <string name="speak_now">Speak now</string>
+    <string name="speech_recognition_failed">Speech recognition failed</string>
+    <string name="clear_all">Clear All</string>
+    <string name="search_suggestions">Search Suggestions</string>
 </resources>

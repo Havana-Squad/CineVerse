@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -27,6 +28,8 @@ import com.karrar.movieapp.utilities.Constants.FIRST_CATEGORY_ID
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.emptyFlow
 
 
 @BindingAdapter("app:showWhenListNotEmpty")
@@ -292,4 +295,9 @@ fun <T> showWhenTextNotEmpty(view: View,text:String){
 @BindingAdapter("isSelectedViewMode")
 fun isSelectedViewMode(button: ImageButton, isSelected: Boolean) {
     button.isSelected = isSelected
+}
+
+@BindingAdapter("searchInput", "searchResultVisible")
+fun showSearchSuggestions(view: View, searchInput: String, isSearchResultVisible: Boolean) {
+    view.isVisible = searchInput.isNotBlank() && isSearchResultVisible.not()
 }

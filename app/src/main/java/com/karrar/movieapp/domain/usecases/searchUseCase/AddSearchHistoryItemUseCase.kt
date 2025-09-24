@@ -5,15 +5,12 @@ import com.karrar.movieapp.data.repository.MovieRepository
 import javax.inject.Inject
 
 
-class PostSaveSearchResultUseCase @Inject constructor(
+class AddSearchHistoryItemUseCase @Inject constructor(
     private val movieRepository: MovieRepository
     ) {
-    suspend operator fun invoke(id: Int, name: String) {
+    suspend operator fun invoke(query: String) {
         movieRepository.insertSearchItem(
-            SearchHistoryEntity(
-                id = id.toLong(),
-                search = name
-            )
+            SearchHistoryEntity(search = query)
         )
     }
 }

@@ -14,7 +14,7 @@ interface MovieDao {
     suspend fun insert(item: WatchList)
 
     @Delete
-    suspend fun delete(item: WatchList)
+    suspend fun deleteSearchItemById(item: WatchList)
 
     @Query("SELECT * FROM WATCH_LIST_TABLE")
     fun getAllSavedMovies(): Flow<List<WatchList>>
@@ -22,8 +22,11 @@ interface MovieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(search: SearchHistoryEntity)
 
-    @Delete
-    suspend fun delete(search: SearchHistoryEntity)
+    @Query("DELETE FROM SEARCH_HISTORY_TABLE WHERE id = :id")
+    suspend fun deleteSearchItemById(id: Long)
+
+    @Query("DELETE FROM SEARCH_HISTORY_TABLE")
+    suspend fun deleteAllSearchHistory()
 
     @Query("SELECT * FROM SEARCH_HISTORY_TABLE")
     fun getAllSearchHistory(): Flow<List<SearchHistoryEntity>>

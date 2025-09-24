@@ -12,75 +12,66 @@
             type="com.karrar.movieapp.ui.search.adapters.MediaSearchInteractionListener" />
     </data>
 
-    <androidx.cardview.widget.CardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="0dp"
-        android:layout_marginVertical="@dimen/spacing_small"
         android:layout_marginHorizontal="@dimen/spacing_small"
-        android:onClick="@{() -> listener.onClickMediaResult(item)}"
-        app:cardCornerRadius="@dimen/radius_small">
+        android:layout_marginBottom="@dimen/spacing_medium">
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_trend"
             android:layout_width="match_parent"
+            android:layout_height="208dp"
+            app:layout_constraintDimensionRatio="1:1.4"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/CardCorners.Medium"
+            tools:src="@drawable/trend"
+            app:posterImage="@{item.mediaImage}"
+            android:onClick="@{() -> listener.onClickMediaResult(item)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/card_background_color">
+            android:layout_marginTop="@dimen/spacing_small"
+            app:layout_constraintStart_toStartOf="@id/image_trend"
+            app:layout_constraintTop_toBottomOf="@id/image_trend"
+            app:layout_constraintBaseline_toBottomOf="parent"
+            android:textAppearance="@style/Body_MD.Medium"
+            android:textColor="@color/shade_secondary"
+            android:text="@{item.mediaName}"
+            android:maxLines="1"
+            android:ellipsize="end"
+            tools:text="Until Dawn"/>
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/image_movie"
-                android:layout_width="142dp"
-                android:layout_height="80dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:mediaPoster="@{item.mediaImage}"
-                app:shapeAppearanceOverlay="@style/CardCorners.Small"
-                tools:src="@drawable/test" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/text_title_movie"
-                style="@style/Regular.Small"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing_medium"
-                android:layout_marginVertical="@dimen/spacing_small"
-                android:ellipsize="end"
-                android:lines="2"
-                android:text="@{item.mediaName}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/image_movie"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="The Mandalorian" />
-
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/text_rate_movie"
-                style="@style/SemiBold.Small"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:paddingVertical="@dimen/spacing_too_small"
+            android:paddingStart="@dimen/spacing_small"
+            android:paddingEnd="6dp"
+            android:background="@drawable/rating_chip_background">
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_medium"
-                android:layout_marginBottom="@dimen/spacing_small"
-                android:drawableStart="@drawable/ic_star_small"
-                android:drawablePadding="@dimen/spacing_too_small"
-                android:text="@{String.valueOf(item.mediaVoteAverage)}"
-                android:textColor="@color/yellow"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/image_movie"
-                tools:text="8.4" />
+                android:text="@{item.mediaVoteAverage}"
+                android:textAppearance="@style/Label_MD.Medium"
+                android:textColor="@color/shade_primary"
+                tools:text="7.5"/>
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_star"
+                android:layout_marginStart="@dimen/spacing_too_small"
+                app:tint="@color/primary_yellow" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/text_year"
-                style="@style/Regular.Small.ternary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_medium"
-                android:layout_marginBottom="@dimen/spacing_small"
-                android:text="@{item.mediaReleaseDate}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/text_rate_movie"
-                tools:text="2022" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

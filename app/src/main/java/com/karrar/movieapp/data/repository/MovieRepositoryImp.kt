@@ -111,8 +111,8 @@ class MovieRepositoryImp @Inject constructor(
         return movieDao.insert(item)
     }
 
-    override suspend fun deleteSearchItem(item: SearchHistoryEntity) {
-        return movieDao.delete(item)
+    override suspend fun deleteSearchItem(id: Long) {
+        return movieDao.deleteSearchItemById(id)
     }
 
     override suspend fun insertMovie(movie: WatchHistoryEntity) {
@@ -233,6 +233,10 @@ class MovieRepositoryImp @Inject constructor(
         val dataSource = movieMovieDataSource.movieByGenreDataSource
         dataSource.setGenre(Constants.ADVENTURE_ID)
         return Pager(config = config, pagingSourceFactory = { dataSource })
+    }
+
+    override suspend fun getSearchSuggestions(query: String): List<MovieDto> {
+        return movieService.searchForMovie(query = query, page = 1).body()?.items ?: emptyList()
     }
 
     override suspend fun getActorMoviesPager(actorId: Int): Pager<Int, MovieDto> {
@@ -377,6 +381,10 @@ class MovieRepositoryImp @Inject constructor(
 
     override suspend fun getAllSearchHistory(): Flow<List<SearchHistoryEntity>> {
         return movieDao.getAllSearchHistory()
+    }
+
+    override suspend fun deleteAllSearchHistory() {
+        return movieDao.deleteAllSearchHistory()
     }
 
     /**

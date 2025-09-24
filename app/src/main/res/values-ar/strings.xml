@@ -134,4 +134,8 @@
     <string name="create_txt">إنشاء</string>
     <string name="no_connection_header">اوبس! لا يوجد إنترنت</string>
     <string name="no_connection_content">يبدو أنك غير متصل بالإنترنت. لنتواصل مجددًا حتى لا تفوتك الفرصة!</string>
+    <string name="speak_now">تحدث الآن</string>
+    <string name="speech_recognition_failed">فشل التعرف على الكلام</string>
+    <string name="clear_all">مسح الكل</string>
+    <string name="search_suggestions">اقتراحات البحث</string>
 </resources>

@@ -22,47 +22,77 @@
 
         <ImageView
             android:id="@+id/imagw_back_arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="6dp"
+            android:layout_marginTop="20dp"
             android:onClick="@{() -> viewModel.onClickBack()}"
             android:src="@drawable/ic_arrow_left"
-            app:layout_constraintBottom_toBottomOf="@id/input_search"
+            android:padding="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/input_search"
-            app:tint="@color/shade_primary_color" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/shade_primary" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input_search"
-            style="@style/Regular.Medium"
+        <LinearLayout
+            android:id="@+id/input_search_container"
             android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="@dimen/spacing_small"
-            android:layout_marginTop="@dimen/spacing_medium"
-            android:layout_marginEnd="@dimen/spacing_medium"
-            android:afterTextChanged="@{(text) -> viewModel.onSearchInputChange(text)}"
-            android:background="@drawable/edit_text_background"
-            android:drawableStart="@drawable/ic_search"
-            android:drawablePadding="@dimen/spacing_small"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:hint="@string/search_hint"
-            android:inputType="text"
-            android:maxLines="1"
-            android:paddingStart="@dimen/spacing_small"
-            android:paddingEnd="@dimen/spacing_small"
-            android:text="@{viewModel.uiState.searchInput}"
-            android:textColor="@color/shade_primary_color"
-            android:textColorHint="@color/shade_ternary_color"
-            android:textCursorDrawable="@drawable/color_cursor"
-            android:transitionName="search_box"
-            app:drawableTint="@color/brand_color"
+            android:layout_height="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/imagw_back_arrow"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/imagw_back_arrow"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:background="@drawable/edit_text_background"
+            android:gravity="center_vertical"
+            android:foreground="@drawable/edit_text_foreground"
+            android:transitionName="search_box">
 
-            <requestFocus />
-        </com.google.android.material.textfield.TextInputEditText>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_search"
+                style="@style/Body_MD.Regular"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/spacing_medium"
+                android:layout_marginVertical="14dp"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:afterTextChanged="@{(text) -> viewModel.onSearchInputChange(text)}"
+                android:background="@drawable/edit_text_background"
+                android:drawableStart="@drawable/ic_search"
+                app:drawableTint="@color/shade_tertiary"
+                android:drawablePadding="@dimen/spacing_small"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="@string/search_hint"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingStart="@dimen/spacing_small"
+                android:paddingEnd="@dimen/spacing_small"
+                android:text="@{viewModel.uiState.searchInput}"
+                android:textColor="@color/shade_primary"
+                android:textColorHint="@color/shade_tertiary"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:imeOptions="actionSearch"
+                android:singleLine="true"
+                android:transitionName="search_box"
+                android:gravity="center_vertical">
+
+                <requestFocus />
+            </com.google.android.material.textfield.TextInputEditText>
+
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="@dimen/spacing_too_small"
+                android:layout_marginVertical="@dimen/spacing_too_small"
+                android:padding="10dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_microphone"
+                app:tint="@color/shade_primary"
+                android:onClick="@{() -> viewModel.onMicrophoneClick()}" />
+        </LinearLayout>
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chip_group_media_type"
@@ -73,9 +103,9 @@
             app:checkedChip="@id/chip_movie"
             app:chipSpacingHorizontal="12dp"
             app:layout_constraintStart_toStartOf="@id/imagw_back_arrow"
-            app:layout_constraintTop_toBottomOf="@id/input_search"
+            app:layout_constraintTop_toBottomOf="@id/input_search_container"
             app:selectionRequired="true"
-            app:showWhenSearch="@{viewModel.uiState.searchInput}"
+            app:isVisible="@{viewModel.uiState.searchResultVisible}"
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
@@ -119,20 +149,61 @@
         </com.google.android.material.chip.ChipGroup>
 
         <TextView
-            android:id="@+id/text_search_label"
-            style="@style/SemiBold.Medium"
+            android:id="@+id/text_search_history"
+            style="@style/Title.SM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_medium"
-            android:drawablePadding="@dimen/spacing_small"
-            android:gravity="center"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginStart="@dimen/spacing_medium"
             android:text="@string/history_label"
-            android:textColor="@color/shade_primary_color"
-            app:drawableStartCompat="@drawable/ic_history"
+            android:textColor="@color/shade_primary"
+            app:hideWhenSearch="@{viewModel.uiState.searchInput}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/input_search_container" />
+
+        <TextView
+            android:id="@+id/text_search_suggestions"
+            style="@style/Title.SM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:text="@string/search_suggestions"
+            android:textColor="@color/shade_primary"
+            app:searchInput="@{viewModel.uiState.searchInput}"
+            app:searchResultVisible="@{viewModel.uiState.searchResultVisible}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/input_search_container" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_search_suggestions"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            app:items="@{viewModel.uiState.searchSuggestions}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:searchInput="@{viewModel.uiState.searchInput}"
+            app:searchResultVisible="@{viewModel.uiState.searchResultVisible}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_search_suggestions"
+            tools:listitem="@layout/item_search_suggestion" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clear_all"
+            style="@style/Body_MD.Medium"
+            android:textColor="@color/brand_primary"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{() -> viewModel.onClearAllSearchHistory()}"
             app:hideWhenListIsEmpty="@{viewModel.uiState.searchHistory}"
             app:hideWhenSearch="@{viewModel.uiState.searchInput}"
-            app:layout_constraintStart_toStartOf="@id/imagw_back_arrow"
-            app:layout_constraintTop_toBottomOf="@id/input_search" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_search_history"
+            app:layout_constraintBottom_toBottomOf="@id/text_search_history"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_media"
@@ -142,14 +213,12 @@
             android:orientation="vertical"
             android:paddingHorizontal="@dimen/spacing_small"
             android:paddingVertical="@dimen/spacing_small"
-            app:errorSearch="@{viewModel.uiState.error}"
+            app:isVisible="@{viewModel.uiState.searchResultVisible}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/chip_group_media_type"
-            app:loadingSearch="@{viewModel.uiState.loading}"
-            app:searchInput="@{viewModel.uiState.searchInput}"
             tools:listitem="@layout/item_media_search" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -159,16 +228,16 @@
             android:clipToPadding="false"
             android:orientation="vertical"
             android:overScrollMode="never"
-            android:paddingVertical="@dimen/spacing_too_small"
+            android:paddingVertical="@dimen/spacing_small"
             android:scrollbars="none"
             app:hideWhenSearch="@{viewModel.uiState.searchInput}"
             app:items="@{viewModel.uiState.searchHistory}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/input_search"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@id/imagw_back_arrow"
-            app:layout_constraintTop_toBottomOf="@id/text_search_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_search_history"
             app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/item_search_history" />
 

@@ -6,11 +6,11 @@
     <data>
         <variable
             name="item"
-            type="com.karrar.movieapp.ui.search.mediaSearchUIState.SearchHistoryUIState" />
+            type="com.karrar.movieapp.ui.search.mediaSearchUIState.SearchSuggestionUiState" />
 
         <variable
             name="listener"
-            type="com.karrar.movieapp.ui.search.adapters.SearchHistoryInteractionListener" />
+            type="com.karrar.movieapp.ui.search.adapters.SearchSuggestionsInteractionListener" />
 
     </data>
     <LinearLayout
@@ -31,15 +31,14 @@
             style="@style/Body_MD.Medium"
             android:textColor="@color/shade_secondary"
             android:drawablePadding="@dimen/spacing_small"
-            app:drawableStartCompat="@drawable/ic_history"
+            app:drawableStartCompat="@drawable/ic_search"
             app:drawableTint="@color/shade_tertiary"
             android:gravity="center_vertical"
-            android:onClick="@{() -> listener.onClickSearchHistory(item.name)}"/>
+            android:onClick="@{() -> listener.onClickSearchSuggestion(item.name)}"/>
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/ic_close"
-            android:onClick="@{() -> listener.onClickDeleteSearchHistoryItem(item)}"
+            android:src="@drawable/ic_arrow_right_up"
             app:tint="@color/shade_secondary" />
     </LinearLayout>
 
