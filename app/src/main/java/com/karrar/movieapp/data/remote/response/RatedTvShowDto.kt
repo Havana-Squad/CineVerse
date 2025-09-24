@@ -28,5 +28,11 @@ data class RatedTvShowDto(
     @SerializedName("vote_average")
     val voteAverage: Double? = null,
     @SerializedName("vote_count")
-    val voteCount: Int? = null
+    val voteCount: Int? = null,
+    @SerializedName("genres")
+    val genres: String? = null,
+    @SerializedName("movie_duration")
+    val movieDuration: Int? = null,
+    @SerializedName("first_air_date")
+    val firstAirDate: String? = null
 )

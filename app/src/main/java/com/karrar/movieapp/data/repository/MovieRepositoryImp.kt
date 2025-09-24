@@ -54,6 +54,10 @@ class MovieRepositoryImp @Inject constructor(
         return movieService.getRatedMovie().body()?.items
     }
 
+    override suspend fun deleteWatchHistory(item: WatchHistoryEntity) {
+        return movieDao.deleteWatchHistory(item)
+    }
+
     override suspend fun deleteMovieFromCollection(
         sessionId: String,
         listId: Int,
@@ -422,5 +426,4 @@ class MovieRepositoryImp @Inject constructor(
     override suspend fun getMovieTrailer(movieId: Int): TrailerDto? {
         return movieService.getMovieTrailer(movieId).body()
     }
-
 }

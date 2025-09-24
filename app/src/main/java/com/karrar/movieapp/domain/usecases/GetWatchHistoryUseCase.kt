@@ -11,4 +11,7 @@ class GetWatchHistoryUseCase @Inject constructor(
     operator fun invoke(): Flow<List<WatchHistoryEntity>> {
         return movieRepository.getAllWatchedMovies()
     }
+    suspend fun deleteWatchHistory(item: WatchHistoryEntity) {
+        movieRepository.deleteWatchHistory(item)
+    }
 }
