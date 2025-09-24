@@ -105,11 +105,19 @@
     <string name="episode_title">%1$d. %2$s</string>
     <string name="season_number">(%1$s مواسم)</string>
     <string name="my_profile">ملفي الشخصي</string>
+    <string name="you_gave_it">انت اعطيته</string>
+
     <string name="settings">الإعدادات</string>
     <string name="my_ratings_">تقييماتي</string>
     <string name="my_collections">مجموعاتي</string>
     <string name="history">السجل</string>
     <string name="change_language">تغيير اللغة</string>
+    <string name="no_history_yet">لا يوجد تاريخ الى الان</string>
+    <string name="no_history_description">المكان هادء هنا... ابدأ بالمشاهدة ونحن سنحفظه</string>
+    <string name="watch_something">جد شيء للمشاهدة</string>
+    <string name="no_ratings_yet">لا توجد تقييمات الى الان</string>
+    <string name="rate_dec">قيم الافلام والمسلسلات لنعرف ما تحبه مما لا تحبه.</string>
+    <string name="start_rating">ابدأ بالتقييم</string>
     <string name="you_can_always_sign_back">يمكنك دائماً تسجيل الدخول مرة أخرى باستخدام حسابك.</string>
     <string name="content_preferences">تفضيلات المحتوى</string>
     <string name="language">اللغة</string>
