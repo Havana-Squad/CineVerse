@@ -24,6 +24,7 @@ import com.karrar.movieapp.ui.category.uiState.ErrorUIState
 import com.karrar.movieapp.ui.category.uiState.GenreUIState
 import com.karrar.movieapp.ui.explore.ExploreInteractionListener
 import com.karrar.movieapp.ui.explore.exploreUIState.ExploreViewMode
+import com.karrar.movieapp.ui.search.SearchViewModel
 import com.karrar.movieapp.utilities.Constants.FIRST_CATEGORY_ID
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
@@ -263,6 +264,20 @@ fun setExploreGenresChips(
 
 @BindingAdapter("app:onTabListener")
 fun setOnMediaTypeTabSelected(tabLayout: TabLayout, listener: ExploreInteractionListener?) {
+    listener?.let { safeListener ->
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                safeListener.onClickMediaType(tab.position+1)
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab) {}
+            override fun onTabReselected(tab: TabLayout.Tab) {}
+        })
+    }
+}
+
+@BindingAdapter("app:onTabListener")
+fun setOnMediaTypeTabSelected(tabLayout: TabLayout, listener: SearchViewModel?) {
     listener?.let { safeListener ->
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {

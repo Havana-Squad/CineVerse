@@ -94,59 +94,44 @@
                 android:onClick="@{() -> viewModel.onMicrophoneClick()}" />
         </LinearLayout>
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chip_group_media_type"
-            style="@style/Widget.Material3.ChipGroup"
+        <com.google.android.material.tabs.TabLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_medium"
-            app:checkedChip="@id/chip_movie"
-            app:chipSpacingHorizontal="12dp"
-            app:layout_constraintStart_toStartOf="@id/imagw_back_arrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/input_search_container"
-            app:selectionRequired="true"
             app:isVisible="@{viewModel.uiState.searchResultVisible}"
-            app:singleSelection="true">
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_movie"
-                style="@style/Chip.Regular.Small"
+            android:id="@+id/media_type_tabs"
+            android:background="@android:color/transparent"
+            android:layout_marginHorizontal="16dp"
+            app:tabIndicator="@drawable/tab_indicator"
+            app:tabIndicatorColor="@color/brand_primary"
+            app:tabIndicatorHeight="2dp"
+            app:tabTextAppearance="@style/Body_MD.Medium"
+            app:tabTextColor="@color/shade_tertiary"
+            app:tabRippleColor="@color/brand_tertiary"
+            app:tabSelectedTextColor="@color/brand_primary"
+            app:onTabListener="@{viewModel}"
+            app:tabMode="fixed">
+            <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{() -> viewModel.onSearchForMovie()}"
-                android:paddingHorizontal="@dimen/spacing_medium"
-                android:paddingVertical="6dp"
-                android:text="@string/movies_chip"
-                android:textColor="@color/chip_text"
-                app:checkedIconEnabled="false"
-                app:chipCornerRadius="@dimen/spacing_small" />
+                android:text="@string/movies"
+                />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_series"
-                style="@style/Chip.Regular.Small"
+            <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{() -> viewModel.onSearchForSeries()}"
-                android:paddingHorizontal="@dimen/spacing_medium"
-                android:paddingVertical="6dp"
-                android:text="@string/tv_shows_chip"
-                android:textColor="@color/chip_text"
-                app:checkedIconEnabled="false"
-                app:chipCornerRadius="@dimen/spacing_small" />
+                android:text="@string/series"
+                />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_actors"
-                style="@style/Chip.Regular.Small"
+            <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{() -> viewModel.onSearchForActor()}"
-                android:paddingHorizontal="@dimen/spacing_medium"
-                android:paddingVertical="6dp"
-                android:text="@string/actors_label"
-                android:textColor="@color/chip_text"
-                app:checkedIconEnabled="false"
-                app:chipCornerRadius="@dimen/spacing_small" />
-        </com.google.android.material.chip.ChipGroup>
+                android:text="@string/actors"
+                />
+        </com.google.android.material.tabs.TabLayout>
 
         <TextView
             android:id="@+id/text_search_history"
@@ -218,7 +203,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/chip_group_media_type"
+            app:layout_constraintTop_toBottomOf="@id/media_type_tabs"
             tools:listitem="@layout/item_media_search" />
 
         <androidx.recyclerview.widget.RecyclerView

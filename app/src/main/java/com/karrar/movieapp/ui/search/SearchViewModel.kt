@@ -242,6 +242,15 @@ class SearchViewModel @Inject constructor(
         }
     }
 
+    fun onClickMediaType(mediaType: Int) {
+        _uiState.update { it.copy(isLoading = true) }
+        when(mediaType) {
+            1 -> onSearchForMovie()
+            2 -> onSearchForSeries()
+            3 -> onSearchForActor()
+        }
+    }
+
     fun resetSearchSuggestionFlag() {
         _uiState.update{ it.copy(isSearchSuggestionClicked = false)}
     }
