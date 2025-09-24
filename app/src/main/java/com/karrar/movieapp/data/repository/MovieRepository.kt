@@ -101,4 +101,6 @@ interface MovieRepository {
 
     suspend fun deleteMovieFromCollection(sessionId: String, listId: Int, movieId: Int) : AddMovieDto?
 
+    suspend fun deleteWatchHistory(item: WatchHistoryEntity)
+
 }

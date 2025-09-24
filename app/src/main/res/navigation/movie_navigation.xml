@@ -258,6 +258,9 @@
         android:name="com.karrar.movieapp.ui.profile.myratings.MyRatingsFragment"
         tools:layout="@layout/fragment_my_ratings">
         <action
+            android:id="@+id/action_ratedMoviesFragment_to_exploringFragment"
+            app:destination="@id/exploringFragment" />
+        <action
             android:id="@+id/action_ratedMoviesFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
         <action
@@ -269,6 +272,9 @@
         android:id="@+id/watchHistoryFragment"
         android:name="com.karrar.movieapp.ui.profile.watchhistory.WatchHistoryFragment"
         tools:layout="@layout/fragment_watch_history">
+        <action
+            android:id="@+id/action_watchHistoryFragment_to_exploringFragment"
+            app:destination="@id/exploringFragment" />
         <action
             android:id="@+id/action_watchHistoryFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
